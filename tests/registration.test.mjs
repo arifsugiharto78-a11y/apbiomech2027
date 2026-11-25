@@ -86,6 +86,12 @@ test('new records have no fee/payment reference; confirmation and attendance are
   assert.equal(h.rows[1][col('Payment status')],'NOT_REQUESTED');assert.equal(h.rows[1][col('Registration status')],'RECEIVED');
   assert.equal(h.context.paymentIntegrationState_().enabled,false);
 });
+test('database initialization expands a blank Sheet and preserves existing rows on repeat',()=>{
+  const h=appsScriptHarness();h.rows.length=0;
+  h.context.initializeRegistrationDatabase_();assert.equal(h.rows[0].length,37);
+  h.context.processRegistration_(formEvent(syntheticSubmission()));
+  const saved=JSON.stringify(h.rows);h.context.initializeRegistrationDatabase_();assert.equal(JSON.stringify(h.rows),saved);
+});
 test('response HTML escapes category and logs exclude participant contents',()=>{
   const h=appsScriptHarness(), response=h.context.doPost(formEvent(syntheticSubmission()));
   assert.ok(response.html.includes('APB2027-0001'));assert.ok(response.html.includes('does not constitute final confirmation'));

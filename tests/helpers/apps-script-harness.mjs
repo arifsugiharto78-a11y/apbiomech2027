@@ -5,7 +5,7 @@ import {readFileSync} from 'node:fs';
 export function appsScriptHarness(overrides={}) {
   const properties={REGISTRATION_MODE:'TEST',TEST_SPREADSHEET_ID:'synthetic-test-database',TEST_EMAIL_ALLOWLIST:'demo.participant@example.invalid',CONSENT_VERSION:'2026-11-25-draft',ACK_EMAIL_ENABLED:'true',...overrides};
   const rows=[], sent=[], logs=[], cache=new Map();
-  let held=false, quota=100, mailFails=false, forceBusy=false;
+  let held=false, quota=100, mailFails=false, forceBusy=false, maxColumns=26;
   const assertLock=()=>{if(!held)throw new Error('UNLOCKED_WRITE');};
   const range=(r,c,n=1,w=1)=>({
     getValues:()=>Array.from({length:n},(_,i)=>Array.from({length:w},(_,j)=>rows[r+i-1]?.[c+j-1]??'')),
@@ -13,7 +13,7 @@ export function appsScriptHarness(overrides={}) {
     setValues:values=>{assertLock();values.forEach((row,i)=>{rows[r+i-1]??=[];row.forEach((v,j)=>{rows[r+i-1][c+j-1]=v;});});return range(r,c,n,w);},
     setFontWeight:()=>range(r,c,n,w),setBackground:()=>range(r,c,n,w),setFontColor:()=>range(r,c,n,w),setNumberFormat:()=>range(r,c,n,w)
   });
-  const sheet={getLastRow:()=>rows.length,getMaxRows:()=>1000,getRange:range,appendRow:row=>{assertLock();rows.push([...row]);},setFrozenRows:()=>{},setColumnWidths:()=>{}};
+  const sheet={getLastRow:()=>rows.length,getMaxRows:()=>1000,getMaxColumns:()=>maxColumns,insertColumnsAfter:(_,count)=>{assertLock();maxColumns+=count;},getRange:range,appendRow:row=>{assertLock();rows.push([...row]);},setFrozenRows:()=>{},setColumnWidths:()=>{}};
   const context=vm.createContext({console:{log:value=>logs.push(value)},Date,JSON,Number,String,Object,Math,Error,
     PropertiesService:{getScriptProperties:()=>({getProperty:key=>properties[key]??null,setProperty:(key,value)=>{assertLock();properties[key]=value;}})},
     LockService:{getScriptLock:()=>({tryLock:()=>{if(held||forceBusy)return false;held=true;return true;},releaseLock:()=>{held=false;}})},

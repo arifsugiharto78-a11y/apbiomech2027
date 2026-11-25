@@ -70,6 +70,7 @@ function initializeRegistrationDatabase_() {
     var book=SpreadsheetApp.openById(config.spreadsheetId);
     var sheet=book.getSheetByName('Registrations')||book.insertSheet('Registrations');
     if (sheet.getLastRow()>0) {registrationSheet_(config);return;}
+    if (sheet.getMaxColumns()<REGISTRATION_HEADERS.length) sheet.insertColumnsAfter(sheet.getMaxColumns(),REGISTRATION_HEADERS.length-sheet.getMaxColumns());
     sheet.getRange(1,1,1,REGISTRATION_HEADERS.length).setValues([REGISTRATION_HEADERS]).setFontWeight('bold').setBackground('#12334f').setFontColor('#ffffff');
     sheet.setFrozenRows(1);
     sheet.getRange(2,1,Math.max(sheet.getMaxRows()-1,1),REGISTRATION_HEADERS.length).setNumberFormat('@');

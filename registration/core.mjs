@@ -1,6 +1,9 @@
 // Shared, dependency-free validation. prepare-registration.mjs copies this into Apps Script.
 const RegistrationCore = (() => {
   const choices = {
+    // CLDR regular region codes; names are resolved at build time for the form.
+    countryCodes: ["AC","AD","AE","AF","AG","AI","AL","AM","AO","AQ","AR","AS","AT","AU","AW","AX","AZ","BA","BB","BD","BE","BF","BG","BH","BI","BJ","BL","BM","BN","BO","BQ","BR","BS","BT","BV","BW","BY","BZ","CA","CC","CD","CF","CG","CH","CI","CK","CL","CM","CN","CO","CP","CQ","CR","CU","CV","CW","CX","CY","CZ","DE","DG","DJ","DK","DM","DO","DZ","EA","EC","EE","EG","EH","ER","ES","ET","FI","FJ","FK","FM","FO","FR","GA","GB","GD","GE","GF","GG","GH","GI","GL","GM","GN","GP","GQ","GR","GS","GT","GU","GW","GY","HK","HM","HN","HR","HT","HU","IC","ID","IE","IL","IM","IN","IO","IQ","IR","IS","IT","JE","JM","JO","JP","KE","KG","KH","KI","KM","KN","KP","KR","KW","KY","KZ","LA","LB","LC","LI","LK","LR","LS","LT","LU","LV","LY","MA","MC","MD","ME","MF","MG","MH","MK","ML","MM","MN","MO","MP","MQ","MR","MS","MT","MU","MV","MW","MX","MY","MZ","NA","NC","NE","NF","NG","NI","NL","NO","NP","NR","NU","NZ","OM","PA","PE","PF","PG","PH","PK","PL","PM","PN","PR","PS","PT","PW","PY","QA","RE","RO","RS","RU","RW","SA","SB","SC","SD","SE","SG","SH","SI","SJ","SK","SL","SM","SN","SO","SR","SS","ST","SV","SX","SY","SZ","TA","TC","TD","TF","TG","TH","TJ","TK","TL","TM","TN","TO","TR","TT","TV","TW","TZ","UA","UG","UM","US","UY","UZ","VA","VC","VE","VG","VI","VN","VU","WF","WS","XK","YE","YT","ZA","ZM","ZW"],
+    position: ['Professor', 'Associate professor', 'Assistant professor', 'Lecturer', 'Researcher', 'Postdoctoral researcher', 'Student', 'Clinician', 'Engineer', 'Industry professional', 'Other'],
     category: ['Regular participant', 'Student participant', 'Accompanying person'],
     membership: ['Member', 'Non-member'],
     participation: ['Presenting author', 'Non-presenting participant'],
@@ -33,9 +36,10 @@ const RegistrationCore = (() => {
     if (!emailPattern.test(data.email)) errors.email = 'Enter a valid email address.';
     if (data.email.toLowerCase() !== data.confirmEmail.toLowerCase()) errors.confirmEmail = 'Email addresses must match.';
     if (!/^\+[1-9][0-9 ()-]{6,30}$/.test(data.phone) || data.phone.replace(/\D/g,'').length > 15 || data.phone.replace(/\D/g,'').length < 7) errors.phone = 'Use an international number, for example +62 812 0000 0000.';
-    for (const key of ['category','membership','participation','invitation','workshop']) {
+    for (const key of ['position','category','membership','participation','invitation','workshop']) {
       if (!choices[key].includes(data[key])) errors[key] = 'Please select an option.';
     }
+    if (!choices.countryCodes.includes(data.country)) errors.country = 'Select a country or region.';
     if (data.participation === 'Presenting author') {
       if (!choices.presentation.includes(data.presentation)) errors.presentation = 'Please select a presentation type.';
       if (data.abstractIds && !/^[A-Za-z0-9_-]+(?:[\s,;]+[A-Za-z0-9_-]+)*$/.test(data.abstractIds)) errors.abstractIds = 'Separate CMT IDs with commas, spaces, or semicolons.';

@@ -15,7 +15,7 @@ All 37 columns are written as plain text, with formula-leading characters additi
 | Phone number | International number with leading + |
 | Institution | Required |
 | Department | Required; Not applicable allowed |
-| Country | Required country or region |
+| Country | Required CLDR two-letter country/region code, selected using English display names |
 | Professional position | Required |
 | Registration category | Regular participant / Student participant / Accompanying person |
 | APAB membership | Member / Non-member; no automatic discount |
@@ -30,7 +30,7 @@ All 37 columns are written as plain text, with formula-leading characters additi
 | Registration fee | Blank until separately approved |
 | Currency | Blank until separately approved |
 | Payment reference | Blank; no gateway active |
-| Payment status | NOT_REQUESTED initially |
+| Payment status | PENDING initially; displayed as Pending Payment; no payment requested |
 | Registration status | RECEIVED initially |
 | Acknowledgment email status | DISABLED / SENDING / SENT / FAILED / QUOTA_EXCEEDED; STATUS_UNKNOWN can appear in a response when status persistence fails |
 | Attendance status | NOT_RECORDED initially |

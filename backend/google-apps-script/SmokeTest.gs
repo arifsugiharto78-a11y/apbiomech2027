@@ -6,7 +6,7 @@ function runSyntheticSmokeTest_() {
   var email=config.testEmails[0];
   var input={title:'Dr',givenName:'Demo Participant',familyName:'',email:email,confirmEmail:email,
     phone:'+62 812 0000 0000',institution:'Example University (synthetic)',department:'Example Department',
-    country:'Indonesia',position:'Researcher',category:'Regular participant',membership:'Non-member',
+    country:'ID',position:'Researcher',category:'Regular participant',membership:'Non-member',
     participation:'Non-presenting participant',invitation:'No',workshop:'Undecided',
     privacy:'yes',terms:'yes',accuracy:'yes',synthetic:'yes',mode:'TEST',consentVersion:config.consentVersion,
     submissionKey:Utilities.getUuid(),startedAt:String(Date.now()-10000),website:''};

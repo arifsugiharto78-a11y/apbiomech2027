@@ -28,7 +28,7 @@ export function appsScriptHarness(overrides={}) {
   return {context,properties,rows,sent,logs,setQuota:value=>{quota=value;},failMail:()=>{mailFails=true;},forceBusy:()=>{forceBusy=true;}};
 }
 export function syntheticSubmission(changes={}) {
-  return {title:'Dr',givenName:'Demo Participant',familyName:'',email:'demo.participant@example.invalid',confirmEmail:'demo.participant@example.invalid',phone:'+62 812 0000 0000',institution:'Example University',department:'Example Department',country:'Indonesia',position:'Researcher',category:'Regular participant',membership:'Non-member',participation:'Non-presenting participant',invitation:'No',workshop:'Undecided',privacy:'yes',terms:'yes',accuracy:'yes',synthetic:'yes',mode:'TEST',consentVersion:'2026-11-25-draft',submissionKey:crypto.randomUUID(),startedAt:String(Date.now()-10000),website:'',...changes};
+  return {title:'Dr',givenName:'Demo Participant',familyName:'',email:'demo.participant@example.invalid',confirmEmail:'demo.participant@example.invalid',phone:'+62 812 0000 0000',institution:'Example University',department:'Example Department',country:'ID',position:'Researcher',category:'Regular participant',membership:'Non-member',participation:'Non-presenting participant',invitation:'No',workshop:'Undecided',privacy:'yes',terms:'yes',accuracy:'yes',synthetic:'yes',mode:'TEST',consentVersion:'2026-11-25-draft',submissionKey:crypto.randomUUID(),startedAt:String(Date.now()-10000),website:'',...changes};
 }
 export function formEvent(input) {
   const contents=new URLSearchParams(input).toString();

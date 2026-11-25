@@ -27,7 +27,7 @@ function acceptRegistration_(data, config) {
     var prior=rows.find(function(row){return row[col('Submission key')]===data.submissionKey;});
     if (prior) {
       if (prior[col('Payload fingerprint')]!==fingerprint) throw new Error('RETRY_CHANGED');
-      return {id:prior[0],category:prior[col('Registration category')],emailStatus:prior[col('Acknowledgment email status')],duplicate:true};
+      return {id:prior[0],category:prior[col('Registration category')],paymentStatus:prior[col('Payment status')],emailStatus:prior[col('Acknowledgment email status')],duplicate:true};
     }
     if (rows.some(function(row){return String(row[col('Email')]).toLowerCase()===RegistrationCore.safeCell(data.email);})) throw new Error('ALREADY_RECEIVED');
     // A bounded global acceptance limit protects Sheets/email quotas; not an IP-based firewall.
@@ -49,7 +49,7 @@ function acceptRegistration_(data, config) {
     sheet.appendRow(registrationRow_(data,id,fingerprint,emailStatus));
     SpreadsheetApp.flush();
     bucket.push(now);cache.put('registration-accepted-window',JSON.stringify(bucket),60);
-    return {id:id,category:data.category,emailStatus:emailStatus,duplicate:false};
+    return {id:id,category:data.category,paymentStatus:'PENDING',emailStatus:emailStatus,duplicate:false};
   });
 }
 function setAcknowledgmentStatus_(config,id,status) {

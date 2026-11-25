@@ -23,6 +23,11 @@ test('demo limits email to synthetic address and all modes require agreements',(
   for(const field of ['privacy','terms','accuracy','synthetic'])assert.ok(core.validate(syntheticSubmission({[field]:''}),'TEST').errors[field]);
   assert.ok(core.validate(syntheticSubmission({comments:'x'.repeat(1001)}),'TEST').errors.comments);
 });
+test('country and academic status selections are validated by the shared server core',()=>{
+  assert.equal(core.validate(syntheticSubmission({country:'JP',position:'Professor'}),'TEST').valid,true);
+  const invalid=core.validate(syntheticSubmission({country:'ZZ',position:'Unrecognized status'}),'TEST');
+  assert.ok(invalid.errors.country);assert.ok(invalid.errors.position);
+});
 test('spreadsheet injection and acknowledgment HTML are escaped',()=>{
   for(const value of ['=IMPORTXML("x")','+62812','-1','@SUM(A1)',' \t=1','\nformula'])assert.ok(core.safeCell(value).startsWith("'"));
   assert.equal(core.escapeHtml('<img onerror="x">'),'&lt;img onerror=&quot;x&quot;&gt;');
@@ -83,7 +88,8 @@ test('new records have no fee/payment reference; confirmation and attendance are
   const h=appsScriptHarness();h.context.processRegistration_(formEvent(syntheticSubmission()));
   const col=name=>h.context.REGISTRATION_HEADERS.indexOf(name);
   for(const name of ['Registration fee','Currency','Payment reference'])assert.equal(h.rows[1][col(name)],'');
-  assert.equal(h.rows[1][col('Payment status')],'NOT_REQUESTED');assert.equal(h.rows[1][col('Registration status')],'RECEIVED');
+  assert.equal(h.rows[1][col('Payment status')],'PENDING');assert.equal(h.rows[1][col('Registration status')],'RECEIVED');
+  assert.equal(h.context.paymentStatusLabel_('PENDING'),'Pending Payment');
   assert.equal(h.context.paymentIntegrationState_().enabled,false);
 });
 test('database initialization expands a blank Sheet and preserves existing rows on repeat',()=>{
@@ -95,6 +101,7 @@ test('database initialization expands a blank Sheet and preserves existing rows 
 test('response HTML escapes category and logs exclude participant contents',()=>{
   const h=appsScriptHarness(), response=h.context.doPost(formEvent(syntheticSubmission()));
   assert.ok(response.html.includes('APB2027-0001'));assert.ok(response.html.includes('does not constitute final confirmation'));
+  assert.ok(response.html.includes('Payment status: Pending Payment'));
   assert.ok(!h.logs.join('').includes('demo.participant'));
   const crafted=h.context.registrationResponse_({ok:true,mode:'TEST',receipt:{id:'<script>',category:'<img>',emailStatus:'SENT'}});
   assert.ok(crafted.html.includes('&lt;script&gt;'));assert.ok(!crafted.html.includes('<img>'));

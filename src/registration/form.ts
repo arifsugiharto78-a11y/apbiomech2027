@@ -10,7 +10,17 @@ export function initRegistrationForm() {
   const result=form.querySelector<HTMLElement>('#registration-result')!;
   const progress=form.querySelector<HTMLElement>('#registration-progress')!;
   const retry=form.querySelector<HTMLButtonElement>('#registration-retry')!;
-  const control=(name:string)=>form.elements.namedItem(name) as HTMLInputElement|HTMLSelectElement;
+  const control=(name:string)=>form.elements.namedItem(name) as HTMLInputElement|HTMLSelectElement|RadioNodeList;
+  const namedControls=(name:string)=>form.querySelectorAll<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>(`[name="${name}"]`);
+  function inlineError(name:string,message:string) {
+    namedControls(name).forEach(field=>message?field.setAttribute('aria-invalid','true'):field.removeAttribute('aria-invalid'));
+    const inline=form!.querySelector<HTMLElement>(`#error-${name}`);
+    if (inline) inline.textContent=message;
+    if (!message) {
+      errors.querySelectorAll<HTMLElement>('li').forEach(item=>{if(item.dataset.field===name)item.remove();});
+      if(!errors.querySelector('li')) errors.hidden=true;
+    }
+  }
   let sent=false;
   const key=crypto.randomUUID();
   control('submissionKey').value=key;
@@ -25,16 +35,28 @@ export function initRegistrationForm() {
     const student=form!.querySelector<HTMLFieldSetElement>('#student-fields')!;
     presenter.hidden=presenter.disabled=control('participation').value!=='Presenting author';
     student.hidden=student.disabled=control('category').value!=='Student participant';
+    if(presenter.hidden) for(const name of ['presentation','abstractIds']) inlineError(name,'');
+    if(student.hidden) for(const name of ['degree','studentStatus']) inlineError(name,'');
   }
   form.addEventListener('change',conditional);
   conditional();
+  function validateEditedField(event:Event) {
+    const field=event.target;
+    if(!(field instanceof HTMLInputElement||field instanceof HTMLSelectElement||field instanceof HTMLTextAreaElement)||!Object.prototype.hasOwnProperty.call(core.limits,field.name)||field.type==='hidden') return;
+    if(event.type==='input'&&field.getAttribute('aria-invalid')!=='true') return;
+    const checked=core.validate(Object.fromEntries(new FormData(form!).entries()),mode);
+    inlineError(field.name,checked.errors[field.name]||'');
+    if(field.name==='email'&&control('confirmEmail').value) inlineError('confirmEmail',checked.errors.confirmEmail||'');
+    result.hidden=true;
+  }
+  for(const event of ['focusout','change','input']) form.addEventListener(event,validateEditedField);
   document.querySelector('#registration-sample')?.addEventListener('click',()=>{
-    const sample:Record<string,string>={title:'Dr',givenName:'Demo Participant',familyName:'',email:'demo.participant@example.invalid',confirmEmail:'demo.participant@example.invalid',phone:'+62 812 0000 0000',institution:'Example University (synthetic)',department:'Example Biomechanics Department',country:'Indonesia',position:'Researcher',category:'Regular participant',membership:'Non-member',participation:'Non-presenting participant',invitation:'No',workshop:'Undecided'};
+    const sample:Record<string,string>={title:'Dr',givenName:'Demo Participant',familyName:'',email:'demo.participant@example.invalid',confirmEmail:'demo.participant@example.invalid',phone:'+62 812 0000 0000',institution:'Example University (synthetic)',department:'Example Biomechanics Department',country:'ID',position:'Researcher',category:'Regular participant',membership:'Non-member',participation:'Non-presenting participant',invitation:'No',workshop:'Undecided'};
     for (const [name,value] of Object.entries(sample)) control(name).value=value;
     for (const name of ['privacy','terms','accuracy','synthetic']) (control(name) as HTMLInputElement).checked=false;
     conditional();
     progress.textContent='Synthetic details filled. Please review the agreements yourself.';
-    control('givenName').focus();
+    (control('givenName') as HTMLInputElement).focus();
   });
   form.addEventListener('submit',event=>{
     if (sent || !ready) {event.preventDefault();return;}
@@ -50,13 +72,11 @@ export function initRegistrationForm() {
     if (!checked.valid) {
       event.preventDefault();
       for (const [name,message] of Object.entries(checked.errors)) {
-        const field=control(name);
-        field?.setAttribute('aria-invalid','true');
-        const inline=form.querySelector<HTMLElement>(`#error-${name}`);
-        if (inline) inline.textContent=message;
+        inlineError(name,message);
         const li=document.createElement('li'), link=document.createElement('a');
+        li.dataset.field=name;
         link.href=`#reg-${name}`;
-        const label=form.querySelector<HTMLLabelElement>(`label[for="reg-${name}"]`)?.textContent?.replace('*','').trim() || name;
+        const label=name==='participation'?'Participation type':form.querySelector<HTMLLabelElement>(`label[for="reg-${name}"]`)?.textContent?.replace('*','').trim() || name;
         link.textContent=`${label}: ${message}`;
         li.append(link);errors.querySelector('ul')!.append(li);
       }
@@ -69,7 +89,8 @@ export function initRegistrationForm() {
       const heading=document.createElement('h2');heading.textContent='Demo acknowledgment — nothing submitted';
       const body=document.createElement('p');body.textContent=`Dear ${checked.data.givenName}, this is how your acknowledgment will appear. Sample registration ID: DEMO-APB2027-0001. Category: ${checked.data.category}.`;
       const note=document.createElement('p');note.textContent='No record was created and no email was sent. This demonstration is not confirmation of conference participation.';
-      result.replaceChildren(heading,body,note);result.hidden=false;result.focus();
+      const payment=document.createElement('p');payment.textContent='Payment status: Pending Payment (demonstration only). No payment is requested.';
+      result.replaceChildren(heading,body,payment,note);result.hidden=false;result.focus();
       progress.textContent='Demonstration completed locally.';
       return;
     }

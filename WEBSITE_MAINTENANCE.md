@@ -125,6 +125,8 @@ In `src/data/conference.json`, set `cmtUrl` to the exact committee-approved HTTP
 
 ## 10. Activate registration
 
+Participant form usability is maintained in the existing RegistrationForm/RegistrationField components and registration-form.css: centered 900 px panel, 32 px desktop/16 px phone padding, two columns above 700 px, single column below, 48 px standard controls, and 8 px borders. Hints follow the controls so paired input boxes align. Email, institution and department span both columns. Participation uses native radios; presenter and student sections remain conditional. Country/region dropdown values use CLDR codes and status choices come from the shared core. Re-run prepare:registration after changing shared options. DEMO keeps autofill off to discourage real details; approved TEST/LIVE uses field-specific name, country, phone and institution autofill. The acknowledgment displays Pending Payment with no payment request.
+
 The owner-authorized participant form now lives at `registration/portal/`. Configure it in `src/data/registration-system.json`; keep DEMO active by default. The legacy `registrationUrl` and `registrationOpen` flags do not activate this form. Follow `REGISTRATION_SYSTEM.md` and `GOOGLE_APPS_SCRIPT_SETUP.md` for the separate private TEST backend, shared validation build, acknowledgment email and LIVE approval guards. Use the selected personal Google account; do not substitute the connected university account. No API secrets, participant rows or database identifiers belong in GitHub. The committee must explicitly approve LIVE collection and privacy/terms before activation. Payment is independently disabled.
 
 ## 11. Add sponsors and exhibitors

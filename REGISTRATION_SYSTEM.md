@@ -30,6 +30,8 @@ LIVE: requires explicit committee authorization, an approved privacy/terms versi
 
 ## Fields and rules
 
+The current form is centered at a maximum of 900 px, with 48 px controls, equal paired name fields, country beside phone, and full-width email, institution and department fields. Helper text follows inputs. Participation is a native radio group; CMT IDs appear only for presenting participants. Inline validation runs on field exit/change and after correction, with entries retained. Country values are CLDR region codes (English labels generated with Intl.DisplayNames); the regular region-code list comes from [Unicode CLDR validity data](https://github.com/unicode-org/cldr/blob/main/common/validity/region.xml). Academic/professional status is a bounded dropdown, with Other available. The five form sections match the owner's usability brief. These changes preserve the existing backend field names and private database column order.
+
 Required: given/single name, email and confirmation, international phone, institution, department (Not applicable allowed), country/region, position, category, APAB membership, participation type, invitation requirement, workshop interest, three agreements. Family name and title are optional. Names are not restricted to Latin letters or a two-part structure.
 
 Student category requires degree programme and full/part-time student status. Presenting authors select oral, poster, or not yet confirmed; CMT IDs remain optional, with up to 20 comma/space/semicolon-separated IDs. Hidden conditional fields are disabled in the browser and cleared by the server. Changing category does not erase the browser's prior entries.
@@ -42,7 +44,7 @@ Each page instance generates a random submission UUID. Retry retains it. A scrip
 
 Controls include bounded payload/field lengths, enum checks, honeypot, minimum 3-second/maximum 24-hour form age, rejection of repeated/unknown parameters, TEST recipient allowlist, per-minute/day global acceptance caps, and no participant contents in logs. The timestamp/honeypot can be forged. Apps Script does not provide a dependable client IP in this interface; these are basic protections, not a full anti-bot or DDoS service. Monitor quotas and pause the backend on abuse. Add a committee-approved server-verified challenge if needed before LIVE.
 
-Google services and HTTP delivery are not transactional together. A row may be saved even if its response is lost. Retry the same key to recover it. Email is claimed before sending and not automatically resent on retry. `SENDING` or `STATUS_UNKNOWN` requires private operator review to avoid duplicate email. SENT means accepted by MailApp, not inbox delivery. Fee, payment reference and currency stay blank; payment starts NOT_REQUESTED and registration RECEIVED.
+Google services and HTTP delivery are not transactional together. A row may be saved even if its response is lost. Retry the same key to recover it. Email is claimed before sending and not automatically resent on retry. `SENDING` or `STATUS_UNKNOWN` requires private operator review to avoid duplicate email. SENT means accepted by MailApp, not inbox delivery. Fee, payment reference and currency stay blank; payment starts PENDING (displayed as Pending Payment) and registration RECEIVED. Pending Payment does not request payment or activate a provider.
 
 ## Verification
 

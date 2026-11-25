@@ -14,7 +14,7 @@ function registrationRow_(data, id, fingerprint, emailStatus) {
     data.email,data.phone,data.institution,data.department,data.country,data.position,
     data.category,data.membership,data.participation,data.presentation,data.abstractIds,
     data.studentStatus,data.dietary,data.invitation,data.accessibility,data.privacy,
-    '', '', '', 'NOT_REQUESTED','RECEIVED',emailStatus,'NOT_RECORDED',data.degree,
+    '', '', '', 'PENDING','RECEIVED',emailStatus,'NOT_RECORDED',data.degree,
     data.workshop,data.comments,data.terms,data.accuracy,data.consentVersion,
     data.submissionKey,fingerprint,data.mode].map(RegistrationCore.safeCell);
 }

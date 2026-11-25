@@ -2,12 +2,12 @@
 
 No provider, link, card/bank form, transaction, webhook, invoice or payment request is implemented. The participant-facing statement is: “Registration fees and payment arrangements will be announced once confirmed by the organizing committee.” Existing IDR planning benchmarks are not copied to registration records.
 
-`Payment.gs` exports a disabled interface state and the permitted state names. Database columns reserve Registration fee, Currency, Payment reference and Payment status. The first three stay blank; status starts NOT_REQUESTED.
+`Payment.gs` exports a disabled interface state and the permitted state names. Database columns reserve Registration fee, Currency, Payment reference and Payment status. The first three stay blank; status starts PENDING, displayed as Pending Payment, as requested. This means payment arrangements are pending, without requesting payment or creating a provider transaction.
 
 | Payment status | Future meaning, subject to approved workflow |
 | --- | --- |
 | NOT_REQUESTED | No payment request issued |
-| PENDING | A verified provider request exists; no confirmation yet |
+| PENDING | Payment arrangements or completion are pending; no transaction is implied |
 | PAID | Provider reports payment; reconciliation pending |
 | VERIFIED | Committee/provider reconciliation completed |
 | FAILED | Verified failure |

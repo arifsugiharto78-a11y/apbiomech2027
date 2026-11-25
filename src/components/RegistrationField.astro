@@ -1,10 +1,10 @@
 ---
-interface Props {name:string; label:string; type?:'text'|'email'|'tel'|'textarea'; required?:boolean; options?:readonly string[]; hint?:string; max?:number; autocomplete?:string;}
-const {name,label,type='text',required=false,options,hint,max=200,autocomplete='off'}=Astro.props;
+interface Props {name:string; label:string; type?:'text'|'email'|'tel'|'textarea'; required?:boolean; options?:readonly (string|{value:string;label:string})[]; hint?:string; max?:number; autocomplete?:string; placeholder?:string; fullWidth?:boolean;}
+const {name,label,type='text',required=false,options,hint,max=200,autocomplete='off',placeholder,fullWidth=false}=Astro.props;
 ---
-<div class:list={['registration-field',{'field-wide':type==='textarea'}]}>
+<div class:list={['registration-field',{'field-wide':fullWidth||type==='textarea'}]}>
   <label for={`reg-${name}`}>{label}{required&&<span aria-hidden="true"> *</span>}{!required&&<span class="field-optional"> (optional)</span>}</label>
+  {options?<select id={`reg-${name}`} name={name} required={required} autocomplete={autocomplete} aria-describedby={`${hint?`hint-${name} `:''}error-${name}`}><option value="">{placeholder||'Select an option'}</option>{options.map(option=><option value={typeof option==='string'?option:option.value}>{typeof option==='string'?option:option.label}</option>)}</select>:type==='textarea'?<textarea id={`reg-${name}`} name={name} rows="3" maxlength={max} placeholder={placeholder} aria-describedby={`${hint?`hint-${name} `:''}error-${name}`}/>:<input id={`reg-${name}`} name={name} type={type} required={required} maxlength={max} autocomplete={autocomplete} placeholder={placeholder} autocapitalize={type==='email'?'none':undefined} spellcheck={type==='email'?false:undefined} aria-describedby={`${hint?`hint-${name} `:''}error-${name}`}/>}
   {hint&&<p id={`hint-${name}`} class="field-hint">{hint}</p>}
-  {options?<select id={`reg-${name}`} name={name} required={required} aria-describedby={`${hint?`hint-${name} `:''}error-${name}`}><option value="">Select an option</option>{options.map(option=><option value={option}>{option}</option>)}</select>:type==='textarea'?<textarea id={`reg-${name}`} name={name} rows="3" maxlength={max} aria-describedby={`${hint?`hint-${name} `:''}error-${name}`}/>:<input id={`reg-${name}`} name={name} type={type} required={required} maxlength={max} autocomplete={autocomplete} aria-describedby={`${hint?`hint-${name} `:''}error-${name}`}/>}
   <span id={`error-${name}`} class="field-error"></span>
 </div>

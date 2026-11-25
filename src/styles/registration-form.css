@@ -1,17 +1,17 @@
 .registration-intro { margin-top: 30px; }
-.registration-intro p { font-size: 1.125rem; line-height: 1.8; }
+.registration-intro p { font-size: var(--text-body); line-height: 1.75; }
 .registration-intro .eyebrow { font-size: .875rem; }
 .registration-payment { padding: 20px; border-left: 4px solid var(--cyan); background: var(--light); }
-.registration-form { margin-top: 32px; font-size: 1.125rem; }
+.registration-form { margin-top: 28px; font-size: var(--text-body); }
 .registration-form > fieldset { margin: 0 0 32px; padding: 26px; border: 1px solid #b5cbd7; border-radius: 6px; min-width: 0; }
-.registration-form legend { font-size: 1.25rem; font-weight: 600; color: var(--navy); padding: 0 10px; max-width: 100%; }
+.registration-form legend { font-size: 1.125rem; font-weight: 600; color: var(--navy); padding: 0 10px; max-width: 100%; }
 .registration-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
 .registration-field { min-width: 0; }
 .registration-field label { display: block; font-weight: 600; margin-bottom: 8px; line-height: 1.6; }
 .field-optional, .field-hint { font-size: 1rem; color: #405a6c; font-weight: 400; }
 .registration-form .field-hint { margin: 6px 0 12px; font-size: 1rem; line-height: 1.7; }
 .field-wide { grid-column: 1 / -1; }
-.registration-form input:not([type=checkbox]), .registration-form select, .registration-form textarea { display: block; width: 100%; min-width: 0; min-height: 50px; border: 1px solid #7a98aa; border-radius: 4px; padding: 12px; background: #fff; color: #263746; font: inherit; font-size: 1.125rem; }
+.registration-form input:not([type=checkbox]), .registration-form select, .registration-form textarea { display: block; width: 100%; min-width: 0; min-height: 46px; border: 1px solid #7a98aa; border-radius: 4px; padding: 10px 12px; background: #fff; color: #263746; font: inherit; font-size: 1rem; }
 .registration-form textarea { resize: vertical; }
 .registration-form [aria-invalid=true] { border-color: #a52525 !important; box-shadow: 0 0 0 1px #a52525; }
 .registration-form .conditional-fields { margin: 28px 0 0; padding: 22px; border: 1px solid #b5cbd7; background: #f6fafc; min-width: 0; }
@@ -26,7 +26,7 @@
 .registration-errors li { margin-block: 10px; line-height: 1.7; }
 .registration-result { padding: 26px; margin-top: 28px; background: #eef8f5; border: 2px solid #327762; border-radius: 6px; overflow-wrap: anywhere; }
 .registration-result h2 { font-size: 1.5rem; }
-.registration-result p, .registration-actions p { font-size: 1.125rem; line-height: 1.8; }
+.registration-result p, .registration-actions p { font-size: var(--text-body); line-height: 1.75; }
 .registration-actions .button { white-space: normal; }
 .registration-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 @media (max-width: 700px) {

@@ -1,13 +1,13 @@
 /* Keep a readable scale at every breakpoint; rem units respect browser font preferences. */
 :root {
-  --text-body: 1.125rem;
-  --text-lead: 1.25rem;
-  --text-ui: 1rem;
+  --text-body: 1rem;
+  --text-lead: 1.125rem;
+  --text-ui: 0.9375rem;
   --text-small: 0.875rem;
 }
 
-body { font-size: var(--text-body); line-height: 1.75; }
-p { line-height: 1.8; }
+body { font-size: var(--text-body); line-height: 1.7; }
+p { line-height: 1.75; }
 h1, h2, h3 { letter-spacing: -0.025em; }
 h2 { line-height: 1.3; }
 .container > *, .page-grid > *, .footer-grid > *, .brand-row > * { min-width: 0; }
@@ -31,14 +31,15 @@ h2 { line-height: 1.3; }
 .welcome-copy, .prose, .association-copy blockquote { max-width: 70ch; }
 .association-copy .association-attribution { font-size: var(--text-small) !important; }
 .section-aside, .page-heading p:not(.eyebrow) { font-size: var(--text-body); }
-.page-heading h1 { line-height: 1.25; }
-.section-heading h2, .section-top h2, .hosts-section h2 {
-  font-size: clamp(2rem, 2.8vw, 2.6rem);
+.page-heading h1 { font-size: clamp(1.875rem, 3vw, 2.5rem); line-height: 1.25; }
+.section-heading h2, .section-top h2, .hosts-section h2,
+.association-copy h2, .bali-section h2 {
+  font-size: clamp(1.625rem, 2.4vw, 2.25rem);
   line-height: 1.3;
 }
-.page-content h2, .association-full h2 { font-size: 1.75rem; line-height: 1.35; }
+.page-content h2, .association-full h2 { font-size: 1.5rem; line-height: 1.35; }
 .information-blocks h2, .speaker-placeholder h3, .announcement-card h3 {
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   line-height: 1.45;
 }
 .speaker-placeholder p, .announcement-card p, .institution-grid p,
@@ -68,7 +69,7 @@ h2 { line-height: 1.3; }
   font-size: var(--text-ui);
   line-height: 1.65;
 }
-.button { min-height: 48px; padding: 14px 22px; }
+.button { min-height: 44px; padding: 12px 20px; }
 .text-link { min-height: 44px; padding-block: 8px; }
 .section-top { flex-wrap: wrap; align-items: flex-start; }
 .section-top .text-link { white-space: normal; }
@@ -115,9 +116,9 @@ h2 { line-height: 1.3; }
 .quick-link > svg { margin-top: 3px; }
 .quick-link > svg:last-child { display: none; }
 
-.dates-list li { font-size: var(--text-ui); line-height: 1.65; gap: 20px; padding-block: 20px; }
+.dates-list li { font-size: var(--text-ui); line-height: 1.65; gap: 20px; padding-block: 16px; }
 .dates-list strong { font-size: var(--text-ui); line-height: 1.65; white-space: normal; text-align: right; }
-.timeline-dot { top: 29px; }
+.timeline-dot { top: 25px; }
 .date-highlight > span { font-size: var(--text-small); line-height: 1.6; }
 .date-highlight strong { font-size: 1.5rem; line-height: 1.5; }
 .date-highlight small { font-size: var(--text-ui); line-height: 1.6; }
@@ -125,21 +126,21 @@ h2 { line-height: 1.3; }
 .estimated-value { gap: 7px; }
 
 .countdown-inner { flex-wrap: wrap; gap: 30px; }
-.countdown-band h2 { font-size: 1.75rem; line-height: 1.4; }
+.countdown-band h2 { font-size: 1.5rem; line-height: 1.4; }
 .countdown-band p:not(.eyebrow) { font-size: var(--text-ui); line-height: 1.7; }
 .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; width: min(100%, 460px); }
 .countdown > div { min-width: 0; }
 .countdown i { display: none; }
 .countdown strong { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.3; }
 .countdown span { font-size: var(--text-small); line-height: 1.6; letter-spacing: 0.04em; }
-.topics-grid li { align-items: baseline; gap: 16px; min-height: 92px; }
+.topics-grid li { align-items: baseline; gap: 16px; min-height: 80px; }
 .topics-grid li > span { font-size: var(--text-small); }
 .status-line { align-items: baseline; }
 .speaker-placeholder { flex-wrap: wrap; }
 .speaker-placeholder .pill { font-size: var(--text-small); white-space: normal; }
 .topics-grid li > span { color: #486476; }
 .breadcrumbs { color: #486170; }
-.institution-grid strong { font-size: 1.375rem; line-height: 1.5; }
+.institution-grid strong { font-size: 1.25rem; line-height: 1.5; }
 .sponsor-grid article { font-size: var(--text-ui); }
 
 table { font-size: var(--text-ui); min-width: 650px; }
@@ -148,7 +149,7 @@ th, td { padding: 18px; line-height: 1.75; }
 .day-tab { font-size: var(--text-ui); line-height: 1.6; min-height: 72px; flex: 1 1 110px; }
 .day-tab span { font-size: var(--text-ui); line-height: 1.5; }
 .day-tab strong { font-size: var(--text-body); }
-.programme-empty h2 { font-size: 1.75rem; line-height: 1.4; }
+.programme-empty h2 { font-size: 1.5rem; line-height: 1.4; }
 .programme-empty p { font-size: var(--text-body); line-height: 1.8; }
 .programme-filters label, .programme-filters select { font-size: var(--text-ui); line-height: 1.6; }
 .programme-filters select { min-height: 48px; padding: 12px; }

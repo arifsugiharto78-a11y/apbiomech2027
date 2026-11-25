@@ -1,0 +1,20 @@
+---
+import '../styles/global.css';
+import '../styles/updates.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import conference from '../data/conference.json';
+import assets from '../generated/assets.json';
+import {withBase} from '../utils/url';
+interface Props { title: string; description?: string; }
+const { title,description=`Join ${conference.name} in ${conference.location}, ${conference.dateLabel}. Hosted by ${conference.host}.`}=Astro.props;
+const canonical=new URL(Astro.url.pathname,Astro.site);
+const hero=assets.hero as {width:number;height:number;webp:string}|null;
+const schema={ '@context':'https://schema.org','@type':'Event',name:conference.name,description,startDate:conference.start,endDate:conference.end,eventAttendanceMode:'https://schema.org/OfflineEventAttendanceMode',location:{'@type':'Place',name:conference.venue.name,url:conference.venue.url,address:{'@type':'PostalAddress',streetAddress:conference.venue.address,addressRegion:'Bali',addressCountry:'ID'}},organizer:{'@type':'Organization',name:conference.host},url:canonical.href,...(hero?{image:new URL(withBase(conference.banner),Astro.site).href}:{})};
+---
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#07547C"/><title>{title} | {conference.abbreviation}</title><meta name="description" content={description}/><meta name="robots" content={conference.launchStatus==='official'?'index, follow':'noindex, nofollow'}/><link rel="canonical" href={canonical}/><link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')}/><meta property="og:type" content="website"/><meta property="og:title" content={`${title} | ${conference.abbreviation}`}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:site_name" content={conference.abbreviation}/>{hero&&<meta property="og:image" content={new URL(withBase(conference.banner),Astro.site).href}/>}<meta name="twitter:card" content={hero?'summary_large_image':'summary'}/><script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/></head>
+<body id="top"><Header/><main id="main-content" tabindex="-1"><slot/></main><Footer/></body></html>

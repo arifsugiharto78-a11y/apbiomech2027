@@ -1,0 +1,12 @@
+---
+import conference from '../data/conference.json';
+import sponsors from '../data/sponsors.json';
+import {withBase,safeExternal} from '../utils/url';
+interface Sponsor {name:string;category:string;image?:string;url?:string;approved:boolean;}
+const approved=(sponsors as Sponsor[]).filter(s=>s.approved);
+const categories=['Supporting institutions','Platinum','Gold','Silver','Exhibitors'];
+const hostLogo=conference.logos.find(logo=>logo.kind==='host');
+const associationLogo=conference.logos.find(logo=>logo.kind==='association');
+---
+<div class="institution-grid"><div><span class="eyebrow">HOST INSTITUTION</span>{hostLogo&&<img class="institution-logo wide" src={withBase(hostLogo.image)} alt={hostLogo.name} width="250" height="90" loading="lazy"/>}<strong>{conference.host}</strong><p>{conference.faculty}</p></div><div><span class="eyebrow">ACADEMIC ASSOCIATION</span>{associationLogo&&<img class="institution-logo" src={withBase(associationLogo.image)} alt={associationLogo.name} width="90" height="90" loading="lazy"/>}<strong>{conference.association}</strong><p>APAB</p></div></div>
+{categories.filter(category=>approved.some(s=>s.category===category)).map(category=><section class="sponsor-category"><h3>{category}</h3><div class="sponsor-grid">{approved.filter(s=>s.category===category).map(sponsor=><article>{sponsor.image&&<img src={withBase(sponsor.image)} alt={sponsor.name} width="180" height="90" loading="lazy"/>}{safeExternal(sponsor.url)?<a href={sponsor.url} target="_blank" rel="noopener noreferrer">{sponsor.name}</a>:<strong>{sponsor.name}</strong>}</article>)}</div></section>)}

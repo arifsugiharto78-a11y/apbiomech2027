@@ -1,0 +1,5 @@
+---
+import conference from '../data/conference.json';
+import Icon from './Icon.astro';
+---
+<section class="venue-card" aria-label="Conference venue details"><div class="venue-card-icon"><Icon name="pin" size={30}/></div><div><p class="eyebrow">CONFERENCE VENUE · BALI, INDONESIA</p><h2>{conference.venue.name}</h2><address>{conference.venue.address}</address><a class="button secondary" href={conference.venue.url} target="_blank" rel="noopener noreferrer">Visit the official hotel website<Icon name="external" size={17}/></a><p class="caption">Hotel information link. Conference room rates and booking arrangements are to be announced.</p></div></section>

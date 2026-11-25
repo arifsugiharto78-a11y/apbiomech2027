@@ -1,0 +1,7 @@
+---
+import {withBase} from '../utils/url';
+export interface Profile { name:string; title?:string; position?:string; institution:string; country:string; image?:string|null; role?:string; category?:string; talk?:string; biography?:string; approved:boolean; }
+interface Props {profile:Profile;}
+const {profile}=Astro.props;
+---
+<article class="profile-card">{profile.image&&<img src={withBase(profile.image)} alt={profile.name} width="400" height="400" loading="lazy"/>}<div>{profile.role&&<p class="eyebrow">{profile.role}</p>}<h3>{profile.name}</h3><p>{profile.title||profile.position}</p><p>{profile.institution}<br/>{profile.country}</p>{profile.talk&&<p class="talk-title">{profile.talk}</p>}{profile.biography&&<details><summary>Read biography</summary><p>{profile.biography}</p></details>}</div></article>

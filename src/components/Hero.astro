@@ -1,0 +1,11 @@
+---
+import conference from '../data/conference.json';
+import assets from '../generated/assets.json';
+import {withBase} from '../utils/url';
+import Icon from './Icon.astro';
+const hero=assets.hero as {width:number;height:number;webp:string}|null;
+---
+<section class:list={['hero',{ 'official-hero':!!hero }]} aria-label="Conference introduction">
+  {hero ? <><h1 class="sr-only">{conference.name} — {conference.abbreviation}</h1><picture><source srcset={withBase(hero.webp)} type="image/webp"/><img class="hero-banner" src={withBase(conference.banner)} alt={conference.bannerAlt} width={hero.width} height={hero.height} loading="eager" fetchpriority="high"/></picture><div class="mobile-conference-facts">{conference.dateLabel} · {conference.location}</div></> :
+  <div class="container hero-preview"><div class="hero-copy"><p class="eyebrow"><span class="short-rule"></span>14TH ASIAN-PACIFIC CONFERENCE ON BIOMECHANICS</p><h1><span class="sr-only">{conference.name}. </span>Advancing biomechanics.<br/><span>Connecting our community.</span></h1><p class="hero-description">Join researchers, clinicians, and engineers in Bali for an international exchange of ideas, discoveries, and perspectives.</p><div class="hero-facts"><span><Icon name="calendar"/>{conference.dateLabel}</span><span><Icon name="pin"/>{conference.location}</span></div><p class="asset-note">Development preview · Official conference banner awaiting upload.</p></div><div class="hero-date" aria-hidden="true"><span class="date-place">BALI, INDONESIA</span><strong>16—19</strong><span class="date-month">NOVEMBER 2027</span><div class="date-rule"></div><span class="date-edition">14th edition<br/>A shared curiosity.<br/>A connected community.</span></div></div>}
+</section>

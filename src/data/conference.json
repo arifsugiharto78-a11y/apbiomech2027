@@ -1,0 +1,62 @@
+{
+  "name": "14th Asian-Pacific Conference on Biomechanics",
+  "abbreviation": "14th APBiomech",
+  "dateLabel": "November 16–19, 2027",
+  "start": "2027-11-16T00:00:00+08:00",
+  "end": "2027-11-19T23:59:59+08:00",
+  "timeZone": "Asia/Makassar",
+  "location": "Bali, Indonesia",
+  "host": "Institut Teknologi Bandung",
+  "faculty": "Faculty of Mechanical and Aerospace Engineering (FTMD)",
+  "association": "Asian-Pacific Association for Biomechanics (APAB)",
+  "email": null,
+  "officialDomain": "https://apbiomech2027.org",
+  "githubPreviewUrl": "https://arifsugiharto78-a11y.github.io/apbiomech2027/",
+  "cmtUrl": null,
+  "registrationUrl": null,
+  "socialMedia": [],
+  "submissionOpen": false,
+  "registrationOpen": false,
+  "launchStatus": "development",
+  "preview": {
+    "enabled": true,
+    "message": "Website Preview — For Organizing Committee Review Only. Content is subject to revision before the official launch."
+  },
+  "banner": "images/branding/apbiomech2027-hero-updated.png",
+  "bannerAlt": "14th APBiomech conference banner showing a Balinese temple, the full 14th Asian-Pacific Conference on Biomechanics title, APAB association and FTMD ITB branding, November 16–19, 2027, and Bali, Indonesia",
+  "logos": [
+    {
+      "name": "Asian-Pacific Association for Biomechanics (APAB)",
+      "image": "images/branding/apab-logo.jpg",
+      "kind": "association"
+    },
+    {
+      "name": "Faculty of Mechanical and Aerospace Engineering, Institut Teknologi Bandung (FTMD ITB)",
+      "image": "images/branding/ftmd-itb-logo.png",
+      "kind": "host"
+    },
+    {
+      "name": "Masyarakat Biomekanika Indonesia",
+      "image": "images/branding/mbi-logo.png",
+      "kind": "supplied-mark"
+    }
+  ],
+  "baliPhotos": [],
+  "abstractTemplate": null,
+  "sponsorshipProspectus": null,
+  "programmeDownload": null,
+  "welcome": [
+    "On behalf of the Organizing Committee, we are pleased to welcome researchers, academics, clinicians, engineers, industry professionals, and students to the 14th Asian-Pacific Conference on Biomechanics (14th APBiomech), to be held in Bali, Indonesia, on November 16–19, 2027.",
+    "Hosted by Institut Teknologi Bandung, the conference aims to provide an international platform for presenting advances in biomechanics, exchanging scientific knowledge, and fostering interdisciplinary collaboration across the Asia-Pacific region and beyond.",
+    "We look forward to welcoming the biomechanics community to Indonesia for an inspiring scientific and cultural experience."
+  ],
+  "venue": {
+    "name": "Nusa Dua Beach Hotel & Spa – Handwritten Collection",
+    "shortName": "Nusa Dua Beach Hotel & Spa",
+    "url": "https://www.nusaduahotel.com/",
+    "address": "Kawasan Pariwisata Nusa Dua, Lot North 4, Jl. Nusa Dua, Benoa, South Kuta, Badung Regency, Bali 80363, Indonesia",
+    "mapUrl": null,
+    "status": "User-specified conference venue"
+  },
+  "bannerOriginal": "images/branding/apbiomech2027-hero.png"
+}

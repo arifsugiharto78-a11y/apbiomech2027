@@ -1,0 +1,11 @@
+---
+import conference from '../data/conference.json';
+import {withBase,safeExternal} from '../utils/url';
+const social=conference.socialMedia as {label:string;url:string}[];
+---
+<footer class="site-footer"><div class="container footer-grid">
+  <div class="footer-identity"><a class="footer-mark" href={withBase('')}>{conference.abbreviation}</a><p>{conference.name}</p><p>{conference.dateLabel}<br/>{conference.location}</p></div>
+  <div><h2>Explore</h2><a href={withBase('about/')}>About the conference</a><a href={withBase('programme/')}>Scientific programme</a><a href={withBase('abstracts/')}>Abstract submission</a><a href={withBase('registration/')}>Registration</a></div>
+  <div><h2>Plan your visit</h2><a href={withBase('travel/')}>Venue & travel</a><a href={withBase('travel/accommodation/')}>Accommodation</a><a href={withBase('travel/bali/')}>Explore Bali</a><a href={withBase('important-dates/')}>Important dates</a></div>
+  <div><h2>Conference Secretariat</h2><p>{conference.host}<br/>{conference.faculty}</p>{conference.email ? <a href={`mailto:${conference.email}`}>{conference.email}</a>:<p class="footer-muted">Contact details to be announced.</p>}<a href={withBase('contact/')}>Contact information →</a>{social.filter(s=>safeExternal(s.url)).map(s=><a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>)}</div>
+</div><div class="container footer-bottom"><span>© {new Date().getFullYear()} {conference.abbreviation}. All rights reserved.</span><div><a href={withBase('privacy/')}>Privacy policy</a><a href={withBase('terms/')}>Terms and conditions</a><a href="#top">Back to top ↑</a></div></div></footer>

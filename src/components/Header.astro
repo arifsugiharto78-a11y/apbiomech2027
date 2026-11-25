@@ -1,0 +1,39 @@
+---
+import conference from '../data/conference.json';
+import {navigation,routeOf} from '../data/navigation';
+import {withBase} from '../utils/url';
+import Icon from './Icon.astro';
+const current=Astro.url.pathname.replace(import.meta.env.BASE_URL,'').replace(/^\//,'');
+const logos=conference.logos as {name:string;image:string;url?:string;kind?:string}[];
+const brandName=conference.abbreviation.replace(/\s+\d{4}$/, '');
+const brandYear=conference.abbreviation.match(/\d{4}$/)?.[0] || '';
+---
+<a href="#main-content" class="skip-link">Skip to content</a>
+{conference.launchStatus !== 'official' && conference.preview.enabled && <div class="committee-preview"><div class="container">{conference.preview.message}</div></div>}
+<div class="info-bar"><div class="container info-inner"><div class="info-facts"><span><Icon name="calendar" size={14}/>{conference.dateLabel}</span><span><Icon name="pin" size={14}/>{conference.location}</span>{conference.email && <a href={`mailto:${conference.email}`}>{conference.email}</a>}</div>{conference.launchStatus !== 'official' && <span class="preview-badge"><i></i>Development preview</span>}</div></div>
+<header class="site-header">
+  <div class="container brand-row">
+    <a class="wordmark" href={withBase('')} aria-label={`${conference.abbreviation} home`}><span>{brandName}<span class="wordmark-year">{brandYear}</span></span><small>ASIAN-PACIFIC CONFERENCE ON BIOMECHANICS</small></a>
+    {logos.length?<div class="brand-logos" aria-label="Supplied conference and institutional logos">{logos.map(logo=><img class:list={['official-logo',`kind-${logo.kind}`]} src={withBase(logo.image)} alt={logo.name} width={logo.kind==='host'?210:64} height={logo.kind==='host'?76:64}/>)}</div>:<div class="host-brand"><span class="label">HOSTED BY</span><strong>{conference.host}</strong><small>{conference.faculty}</small></div>}
+    <button class="mobile-toggle" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false"><Icon name="menu"/></button>
+  </div>
+  <div class="nav-border"><nav id="primary-nav" class="container primary-nav" aria-label="Main navigation">
+    {navigation.map(group=><div class:list={['nav-item',{active:group.slug ? current.startsWith(`${group.slug}/`) : current===''}]}>
+      <div class="nav-label"><a href={withBase(group.slug ? `${group.slug}/` : '')} aria-current={(group.slug ? current===`${group.slug}/` : current==='') ? 'page':undefined}>{group.label}</a>{group.items.length>0 && <button class="dropdown-toggle" aria-label={`Show ${group.label} menu`} aria-expanded="false" aria-controls={`menu-${group.slug}`}><Icon name="chevron" size={13}/></button>}</div>
+      {group.items.length>0 && <ul class="dropdown" id={`menu-${group.slug}`}>{group.items.map(([label,slug])=><li><a href={withBase(routeOf(group.slug,slug))} aria-current={current===routeOf(group.slug,slug)?'page':undefined}>{label}</a></li>)}</ul>}
+    </div>)}
+  </nav></div>
+</header>
+<script>
+  const mobile=document.querySelector<HTMLButtonElement>('.mobile-toggle');
+  const nav=document.querySelector<HTMLElement>('#primary-nav');
+  function closeMenus(){document.querySelectorAll<HTMLButtonElement>('.dropdown-toggle').forEach(button=>{button.setAttribute('aria-expanded','false');button.closest('.nav-item')?.classList.remove('open');});}
+  mobile?.addEventListener('click',()=>{const open=mobile.getAttribute('aria-expanded')!=='true';mobile.setAttribute('aria-expanded',String(open));mobile.setAttribute('aria-label',open?'Close navigation':'Open navigation');nav?.classList.toggle('mobile-open',open);});
+  document.querySelectorAll<HTMLButtonElement>('.dropdown-toggle').forEach(button=>{
+    button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')!=='true';closeMenus();button.setAttribute('aria-expanded',String(open));button.closest('.nav-item')?.classList.toggle('open',open);});
+    button.addEventListener('keydown',event=>{if(event.key==='ArrowDown'){event.preventDefault();closeMenus();button.setAttribute('aria-expanded','true');button.closest('.nav-item')?.classList.add('open');button.closest('.nav-item')?.querySelector<HTMLAnchorElement>('.dropdown a')?.focus();}});
+  });
+  document.addEventListener('click',event=>{if(!(event.target as Element).closest('.nav-item'))closeMenus();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'){const active=document.activeElement?.closest('.nav-item')?.querySelector<HTMLButtonElement>('.dropdown-toggle');closeMenus();active?.focus();if(!active&&mobile?.getAttribute('aria-expanded')==='true'){mobile.click();mobile.focus();}}});
+  nav?.addEventListener('focusout',()=>{setTimeout(()=>{if(!nav.contains(document.activeElement))closeMenus();},0);});
+</script>

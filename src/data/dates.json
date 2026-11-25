@@ -1,0 +1,75 @@
+[
+  {
+    "id": "registration-open",
+    "label": "Registration opens",
+    "date": null,
+    "estimatedDate": "2027-01-28",
+    "estimatedLabel": null,
+    "referenceDate": "2025-01-30"
+  },
+  {
+    "id": "abstracts-open",
+    "label": "Call for abstracts opens",
+    "date": null,
+    "estimatedDate": "2027-02-22",
+    "estimatedLabel": null,
+    "referenceDate": "2025-02-24"
+  },
+  {
+    "id": "abstracts-close",
+    "label": "Abstract submission deadline",
+    "date": null,
+    "estimatedDate": "2027-05-23",
+    "estimatedLabel": null,
+    "referenceDate": "2025-05-25"
+  },
+  {
+    "id": "acceptance",
+    "label": "Abstract acceptance notification",
+    "date": null,
+    "estimatedDate": "2027-06-23",
+    "estimatedLabel": null,
+    "referenceDate": "2025-06-25"
+  },
+  {
+    "id": "early-bird",
+    "label": "Early-bird registration deadline",
+    "date": null,
+    "estimatedDate": "2027-07-28",
+    "estimatedLabel": null,
+    "referenceDate": "2025-07-30"
+  },
+  {
+    "id": "author-registration",
+    "label": "Author registration deadline",
+    "date": null,
+    "estimatedDate": "2027-08-02",
+    "estimatedLabel": null,
+    "referenceDate": "2025-08-04"
+  },
+  {
+    "id": "programme",
+    "label": "Programme announcement",
+    "date": null,
+    "estimatedDate": null,
+    "estimatedLabel": "Mid-August 2027",
+    "referenceDate": null
+  },
+  {
+    "id": "regular-registration",
+    "label": "Regular registration deadline",
+    "date": null,
+    "estimatedDate": "2027-11-08",
+    "estimatedLabel": null,
+    "referenceDate": "2025-11-10"
+  },
+  {
+    "id": "conference",
+    "label": "Conference",
+    "source": "conference",
+    "date": null,
+    "estimatedDate": null,
+    "estimatedLabel": null,
+    "referenceDate": null
+  }
+]

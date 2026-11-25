@@ -1,0 +1,8 @@
+---
+import {safeExternal} from '../utils/url';
+import Icon from './Icon.astro';
+interface Props{url:string|null;open:boolean;label:string;unavailable:string;}
+const {url,open,label,unavailable}=Astro.props;
+const href=open?safeExternal(url):null;
+---
+<div class="external-action">{href?<><a class="button" href={href} target="_blank" rel="noopener noreferrer">{label}<Icon name="external" size={17}/></a><p>Opens the official external service in a new tab.</p></>:<><button class="button" disabled>{label}<Icon name="external" size={17}/></button><p>{unavailable}</p></>}</div>

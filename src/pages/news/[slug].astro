@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import {announcements} from '../../utils/content';
+import {withBase} from '../../utils/url';
+export function getStaticPaths(){return announcements.map(post=>({params:{slug:post.slug},props:{post}}));}
+const {post}=Astro.props;
+const {Content}=post;
+---
+<Layout title={post.frontmatter.title} description={post.frontmatter.summary}><div class="page-heading"><div class="container"><Breadcrumbs title={post.frontmatter.title} group="Latest Announcements" groupSlug="news"/><p class="eyebrow">{post.frontmatter.category}</p><h1>{post.frontmatter.title}</h1><time datetime={post.frontmatter.date}>{post.frontmatter.date}</time></div></div><article class="container article-content prose"><Content/><a class="text-link" href={withBase('news/')}>← All announcements</a></article></Layout>

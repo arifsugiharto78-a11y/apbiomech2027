@@ -1,0 +1,9 @@
+---
+import conference from '../data/conference.json';
+---
+<section class="countdown-band" aria-label="Countdown to the conference"><div class="container countdown-inner"><div><p class="eyebrow">THE JOURNEY TO BALI</p><h2 data-countdown-status>See you at {conference.abbreviation}.</h2><p>{conference.dateLabel} · {conference.timeZone} (UTC+08:00)</p></div><div class="countdown" data-countdown data-start={conference.start} data-end={conference.end} aria-label="Time until the conference"><div><strong data-part="days">—</strong><span>Days</span></div><i>:</i><div><strong data-part="hours">—</strong><span>Hours</span></div><i>:</i><div><strong data-part="minutes">—</strong><span>Minutes</span></div><i>:</i><div><strong data-part="seconds">—</strong><span>Seconds</span></div></div><noscript>The conference begins on {conference.dateLabel}.</noscript></div></section>
+<script>
+  import {countdownState} from '../utils/countdown.mjs';
+  const timer=document.querySelector<HTMLElement>('[data-countdown]');
+  if(timer){let interval:ReturnType<typeof setInterval>|undefined;const tick=()=>{const state=countdownState(Date.now(),timer.dataset.start!,timer.dataset.end!);['days','hours','minutes','seconds'].forEach(key=>{const element=timer.querySelector(`[data-part="${key}"]`);if(element)element.textContent=String(state[key as 'days'|'hours'|'minutes'|'seconds']).padStart(2,'0');});if(state.status!=='upcoming'){const title=document.querySelector('[data-countdown-status]');if(title)title.textContent=state.status==='live'?'The conference is underway.':'Thank you for joining us.';if(interval)clearInterval(interval);}};tick();if(Date.now()<new Date(timer.dataset.start!).getTime())interval=setInterval(tick,1000);}
+</script>

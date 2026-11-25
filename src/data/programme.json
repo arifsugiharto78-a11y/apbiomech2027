@@ -1,0 +1,6 @@
+{
+  "published": false,
+  "days": ["2027-11-16", "2027-11-17", "2027-11-18", "2027-11-19"],
+  "sessionTypes": ["Opening ceremony", "Keynote lecture", "Plenary session", "Parallel scientific session", "Poster presentation", "Workshop", "Networking event", "Conference dinner", "Awards ceremony", "Closing ceremony"],
+  "entries": []
+}

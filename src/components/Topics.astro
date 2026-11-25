@@ -1,0 +1,5 @@
+---
+import topics from '../data/topics.json';
+---
+<p class="status-line"><span class="status-dot"></span>{topics.approved?'Approved scientific topics':'Proposed topics · Subject to Scientific Committee approval'}</p>
+<ol class="topics-grid">{topics.items.map((topic,i)=><li><span>{String(i+1).padStart(2,'0')}</span><h3>{topic}</h3></li>)}</ol>

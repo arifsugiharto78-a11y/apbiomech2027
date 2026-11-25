@@ -1,0 +1,5 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {withBase} from '../utils/url';
+---
+<Layout title="Page not found" description="Find your way back to the 14th APBiomech conference website."><section class="container section error-page"><p class="eyebrow">ERROR 404</p><h1>A small detour.</h1><p>We couldn’t find that page. Return to the conference homepage to continue exploring.</p><a class="button" href={withBase('')}>Back to the homepage →</a></section></Layout>

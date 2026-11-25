@@ -1,0 +1,8 @@
+---
+import data from '../data/committee.json';
+import ProfileCard,{type Profile} from './ProfileCard.astro';
+interface Props{scientific?:boolean;}
+const {scientific=false}=Astro.props;
+const profiles=(data as Profile[]).filter(p=>p.approved&&(scientific?['International Scientific Committee','Local Scientific Committee'].includes(p.role||''):!['International Scientific Committee','Local Scientific Committee'].includes(p.role||'')));
+---
+{profiles.length?<div class="profile-grid">{profiles.map(profile=><ProfileCard profile={profile}/>)}</div>:<div class="notice"><strong>Committee members to be announced.</strong><p>Only approved profiles will be published.</p></div>}

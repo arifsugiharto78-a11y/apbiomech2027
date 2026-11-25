@@ -1,0 +1,12 @@
+---
+import dates from '../data/dates.json';
+import conference from '../data/conference.json';
+import planning from '../data/planning.json';
+const format=(date:string)=>new Intl.DateTimeFormat('en',{dateStyle:'long',timeZone:conference.timeZone}).format(new Date(date.length===10?`${date}T12:00:00+08:00`:date));
+const hasEstimates=dates.some(row=>!row.date&&(row.estimatedDate||row.estimatedLabel));
+---
+<div class="dates-content">
+  {hasEstimates&&<p class="planning-note">Official deadlines: To be announced. The estimates below are provisional planning references and await committee approval.</p>}
+  <ol class="dates-list">{dates.map(date=><li class:list={{'conference-date':date.id==='conference'}}><span class="timeline-dot"></span><span>{date.label}</span><strong>{date.id==='conference'?conference.dateLabel:date.date?<time datetime={date.date}>{format(date.date)}</time>:date.estimatedDate||date.estimatedLabel?<span class="estimated-value">{date.estimatedDate?<time datetime={date.estimatedDate}>{format(date.estimatedDate)}</time>:date.estimatedLabel}<small>Estimated</small></span>:'To be announced'}</strong></li>)}</ol>
+  {hasEstimates&&<details class="planning-method"><summary>How these estimates were prepared</summary><p>{planning.method}</p><p>{planning.earlyBirdNote}</p><a href={planning.referenceUrl} target="_blank" rel="noopener noreferrer">2025 registration and key dates ↗</a><a href={planning.submissionReferenceUrl} target="_blank" rel="noopener noreferrer">2025 submission milestones ↗</a></details>}
+</div>

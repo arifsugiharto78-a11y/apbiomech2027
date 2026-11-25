@@ -1,0 +1,8 @@
+---
+import profiles from '../data/speakers.json';
+import ProfileCard,{type Profile} from './ProfileCard.astro';
+interface Props{category?:string;}
+const {category}=Astro.props;
+const speakers=(profiles as Profile[]).filter(p=>p.approved&&(!category||p.category===category));
+---
+{speakers.length>0?<div class="profile-grid">{speakers.map(profile=><ProfileCard profile={profile}/>)}</div>:<div class="speaker-placeholder"><div class="speaker-symbol" aria-hidden="true">“</div><div><h3>{category==='invited'?'Invited speakers will be announced soon.':'Keynote speakers will be announced soon.'}</h3><p>Meet the voices shaping the next chapter of biomechanics.<br/>Confirmed profiles and lecture details will be shared here.</p></div><span class="pill">Coming soon</span></div>}

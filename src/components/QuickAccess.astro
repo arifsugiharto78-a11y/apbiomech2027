@@ -1,0 +1,6 @@
+---
+import {withBase} from '../utils/url';
+import Icon from './Icon.astro';
+const links=[['document','Call for Abstracts','abstracts/','Prepare to share your research'],['people','Registration','registration/','Plan your participation'],['calendar','Important Dates','important-dates/','Keep track of key milestones'],['clock','Scientific Programme','programme/','Explore the four-day meeting']];
+---
+<div class="quick-wrap"><nav class="container quick-access" aria-label="Conference quick access">{links.map(([icon,label,path,sub],i)=><a href={withBase(path)} class:list={['quick-link',{featured:i===0}]}><Icon name={icon} size={24}/><span><strong>{label}</strong><small>{sub}</small></span><Icon size={17}/></a>)}</nav></div>

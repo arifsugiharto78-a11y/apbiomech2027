@@ -1,0 +1,6 @@
+---
+import {withBase} from '../utils/url';
+interface Props{title:string;group?:string;groupSlug?:string;}
+const {title,group,groupSlug}=Astro.props;
+---
+<nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href={withBase('')}>Home</a></li>{groupSlug&&title!==group&&<li><a href={withBase(`${groupSlug}/`)}>{group}</a></li>}<li aria-current="page">{title}</li></ol></nav>

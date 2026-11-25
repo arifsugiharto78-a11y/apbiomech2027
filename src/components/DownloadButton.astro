@@ -1,0 +1,9 @@
+---
+import {withBase} from '../utils/url';
+import {existsSync} from 'node:fs';
+import Icon from './Icon.astro';
+interface Props{path:string|null;label:string;}
+const {path,label}=Astro.props;
+const available=path&&existsSync(`public/${path}`);
+---
+<div class="external-action">{available?<a class="button secondary" href={withBase(path!)} download>{label}<Icon name="download" size={17}/></a>:<><button class="button secondary" disabled>{label}<Icon name="download" size={17}/></button><p>Document to be announced.</p></>}</div>

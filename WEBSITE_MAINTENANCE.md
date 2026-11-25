@@ -168,7 +168,7 @@ The times are schema examples, not announced sessions. Set each approved record 
 
 ## 13. Replace the official homepage banner
 
-The original user-supplied banner is now installed. To replace it with a subsequently approved version, copy that original unchanged to:
+The original user-supplied banner is retained. The active user-approved name variant is controlled by `banner` in `src/data/conference.json`, currently `public/images/branding/apbiomech2027-hero-updated.png`. To switch to another approved file, upload it and update that configuration path. The retained original is:
 
 `public/images/branding/apbiomech2027-hero.png`
 

@@ -1,6 +1,6 @@
 # Verification and handoff
 
-Reviewed November 24, 2026. Status: working development preview; no public deployment or external-account changes performed.
+Reviewed November 25, 2026. Status: committee demonstration published through the owner-authorized personal GitHub repository. The official domain remains inactive. See GitHub Actions for deployment status and the final handoff report for live verification.
 
 ## Passed
 
@@ -19,7 +19,7 @@ Reviewed November 24, 2026. Status: working development preview; no public deplo
 - Nusa Dua Beach Hotel & Spa is the user-selected venue. Fee and deadline estimates are explicitly provisional, with source links and the adjustment method visible. Actual 2027 fees, billing currency, tax treatment, deadlines, meeting-room allocation, room rates, profiles, programme, contact, policies, documents, and portals remain pending approval.
 - Updated desktop (1440px) and phone (390px) screenshots were inspected with the official artwork. All three header logos load; the mobile banner renders at 375 × 222 pixels with its full composition and a separate readable date/location line. The phone page has no horizontal overflow. Browser checks confirmed the reference fee amounts, a disabled registration button, the official venue link, and no console errors.
 - Lighthouse was not run; no score is claimed. Repeat accessibility, performance, visual review, and production smoke checks after official assets and content arrive.
-- Live CMT, external registration/payment, DNS, HTTPS provisioning, and GitHub Actions deployment require real committee-controlled destinations and an authorized deployment. They were not exercised against external services.
+- CMT, external registration/payment, and official-domain DNS remain unconfigured. GitHub Pages HTTPS and Actions deployment are used only for the authorized committee demonstration.
 - Direct reference-site and subpage requests returned gateway errors. Search-indexed reference content was reviewed for structure only.
 
 ## Run and publish

@@ -2,10 +2,10 @@
 
 Prepared for the personal account **arifsugiharto78-a11y**. No organization, replacement account, custom domain, or DNS setup is required.
 
-- Intended repository: https://github.com/arifsugiharto78-a11y/apbiomech2027
-- Intended committee preview: https://arifsugiharto78-a11y.github.io/apbiomech2027/
+- Repository: https://github.com/arifsugiharto78-a11y/apbiomech2027
+- Committee preview: https://arifsugiharto78-a11y.github.io/apbiomech2027/
 - GitHub Pages source: GitHub Actions; default branch: `main`.
-- Status at preparation: not yet published; authenticated account verification and explicit publication authorization remain required.
+- Publication authorized by the owner on November 25, 2026. Authenticated GitHub CLI identity verified as arifsugiharto78-a11y. The public repository and Actions-based Pages configuration are in place. Latest workflow status: https://github.com/arifsugiharto78-a11y/apbiomech2027/actions.
 
 ## Local preparation
 
@@ -19,7 +19,7 @@ Confirmed deadlines and 2027 registration fees remain “To be announced.” The
 
 Readiness verified November 25, 2026: clean dependency installation; type checking with 40 files and no errors or warnings; eight tests passed; 41 static HTML pages built and link/asset-checked under `/apbiomech2027/`; correct account-specific canonical URLs; exact committee notification and noindex on every page; workflow YAML parsed and its build-to-deploy dependency checked. Browser review covered desktop (1440px), tablet (768px), and phone (390px), with no horizontal page overflow, all branding images loaded, keyboard dropdown operation, mobile registration navigation, disabled registration, and no reported console errors.
 
-The proposed publication inventory contains 81 source and asset files (approximately 5 MB). The heuristic scan found no common credential patterns or confidential office documents. No local Git repository, remote history, public repository, or GitHub settings have been changed during preparation. The unauthenticated repository lookup returned 404; an authenticated check is still required to rule out an existing private repository.
+The proposed publication inventory contains 81 source and asset files (approximately 5 MB). The heuristic scan found no common credential patterns or confidential office documents. The authenticated repository check confirmed no existing repository. After owner authorization, a new public repository was created and the reviewed files were committed on main. The initial commit preserves the prepared site as the beginning of the project history.
 
 Perform the following only after the owner explicitly approves public repository creation, upload, and GitHub Pages settings changes:
 

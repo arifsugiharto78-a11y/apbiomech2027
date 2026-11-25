@@ -10,6 +10,7 @@ import Programme from './Programme.astro';
 import ExternalAction from './ExternalAction.astro';
 import DownloadButton from './DownloadButton.astro';
 import RegistrationTable from './RegistrationTable.astro';
+import RegistrationForm from './RegistrationForm.astro';
 import Sponsors from './Sponsors.astro';
 import AnnouncementCards from './AnnouncementCards.astro';
 import Faq from './Faq.astro';
@@ -34,8 +35,8 @@ const photos=conference.baliPhotos as {image:string;alt:string;credit:string}[];
 {path==='abstracts/'&&<><ExternalAction url={conference.cmtUrl} open={conference.submissionOpen} label="Submit via Microsoft CMT" unavailable="Abstract submission will open soon."/><section class="subsection"><h2>Submission information</h2><div class="link-grid">{[['Submission guidelines','abstracts/guidelines/'],['Abstract template','abstracts/template/'],['Oral & poster presentations','abstracts/presentations/'],['Scientific topics','programme/topics/']].map(([label,url])=><a href={withBase(url)}>{label}<span aria-hidden="true">↗</span></a>)}</div></section><section class="subsection"><h2>Important submission dates</h2><ImportantDates/></section><section class="subsection"><h2>Proposed scientific topics</h2><Topics/></section><DownloadButton path={conference.abstractTemplate} label="Download abstract template"/></>}
 {path==='abstracts/portal/'&&<ExternalAction url={conference.cmtUrl} open={conference.submissionOpen} label="Submit via Microsoft CMT" unavailable="Abstract submission will open soon."/>}
 {path==='abstracts/template/'&&<DownloadButton path={conference.abstractTemplate} label="Download abstract template"/>}
-{path==='registration/'&&<><ExternalAction url={conference.registrationUrl} open={conference.registrationOpen} label="Register for the conference" unavailable="Registration will open soon."/><RegistrationTable/><div class="link-grid">{[['Payment information','registration/payment/'],['Cancellation and refund policy','registration/cancellation/']].map(([label,url])=><a href={withBase(url)}>{label}<span aria-hidden="true">↗</span></a>)}</div></>}
-{path==='registration/portal/'&&<ExternalAction url={conference.registrationUrl} open={conference.registrationOpen} label="Register for the conference" unavailable="Registration will open soon."/>}
+{path==='registration/'&&<><a class="button" href={withBase('registration/portal/')}>View participant registration form →</a><p class="registration-payment">Registration fees and payment arrangements will be announced once confirmed by the organizing committee.</p><RegistrationTable/><div class="link-grid">{[['Payment information','registration/payment/'],['Cancellation and refund policy','registration/cancellation/']].map(([label,url])=><a href={withBase(url)}>{label}<span aria-hidden="true">↗</span></a>)}</div></>}
+{path==='registration/portal/'&&<RegistrationForm/>}
 {path==='sponsorship/'&&<><DownloadButton path={conference.sponsorshipProspectus} label="Download sponsorship prospectus"/><div class="notice"><strong>Interested in supporting the conference?</strong><p>Secretariat contact details and the approved sponsorship process will be published here.</p><a class="text-link" href={withBase('contact/')}>Conference Secretariat →</a></div></>}
 {path==='sponsorship/prospectus/'&&<DownloadButton path={conference.sponsorshipProspectus} label="Download sponsorship prospectus"/>}
 {path==='important-dates/'&&<ImportantDates/>}

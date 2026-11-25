@@ -1,6 +1,6 @@
 # 14th APBiomech
 
-Static, responsive conference website built with Astro, TypeScript, Tailwind CSS, and locally served Inter fonts. All public pages are generated as HTML. No backend, database, tracking, or participant-data collection is included.
+Static, responsive conference website built with Astro, TypeScript, Tailwind CSS, and locally served Inter fonts. All public pages are generated as HTML. The participant form operates in DEMO mode without data collection. Separate Google Apps Script/private Google Sheets backend templates are prepared; no backend is deployed or tracking enabled.
 
 ## Current status
 
@@ -8,9 +8,11 @@ GitHub account: **arifsugiharto78-a11y**. Committee demonstration: [https://arif
 
 **Public committee demonstration; official launch pending.** The original conference banner and the APAB, FTMD ITB, and Masyarakat Biomekanika Indonesia logo files have been imported from the user-specified OneDrive branding folder. The original banner is preserved unchanged. A separate user-requested name-label variant displays “14th APBiomech” without cropping; its provenance and edit prompt are recorded in `public/images/branding/BANNER_UPDATE.md`. A WebP is generated at build time. The selected conference venue is Nusa Dua Beach Hotel & Spa – Handwritten Collection, Bali; venue details and an official hotel link are included.
 
-At the user’s request, provisional deadlines preserve lead times from the 2025 conference, and fee benchmarks retain the 2025 NZD source amounts (full: 800/900; student: 400/500), displayed in IDR at the owner-supplied planning rate of NZD 1 = IDR 10,000 (full: IDR 8,000,000/9,000,000; student: IDR 4,000,000/5,000,000). Estimates are clearly labelled, sourced, and stored separately from approved values. Final deadlines, 2027 prices and billing currency, secretariat email, profiles, final topics, policies, portals, templates, programme, sponsorship, and room rates remain pending. Unavailable submission and registration actions remain disabled.
+At the user’s request, provisional deadlines preserve lead times from the 2025 conference, and fee benchmarks retain the 2025 NZD source amounts (full: 800/900; student: 400/500), displayed in IDR at the owner-supplied planning rate of NZD 1 = IDR 10,000 (full: IDR 8,000,000/9,000,000; student: IDR 4,000,000/5,000,000). Estimates are clearly labelled, sourced, and stored separately from approved values. Final deadlines, 2027 prices and billing currency, secretariat email, profiles, final topics, policies, portals, templates, programme, sponsorship, and room rates remain pending. Actual registration and abstract submission remain closed; the participant form supports synthetic DEMO previews.
 
 ## Run locally
+
+Participant form: `/registration/portal/`. Actual registration and abstract submission remain closed. See [REGISTRATION_SYSTEM.md](REGISTRATION_SYSTEM.md), [GOOGLE_APPS_SCRIPT_SETUP.md](GOOGLE_APPS_SCRIPT_SETUP.md), [REGISTRATION_DATABASE_SCHEMA.md](REGISTRATION_DATABASE_SCHEMA.md), and [PAYMENT_INTEGRATION_PLAN.md](PAYMENT_INTEGRATION_PLAN.md). The selected personal Google account must configure/deploy a private TEST backend before real Google connectivity/email checks; the connected university account is not used. LIVE collection requires separate committee approval. No payment provider is implemented. Tests include registration validation, duplicate/ID handling, escaping, limits and mail failure with emulated Google services; these do not verify a deployed Google account. Builds regenerate the shared Apps Script core and check mode configuration.
 
 Install Node.js 24 LTS (including npm), then run these commands inside this directory:
 

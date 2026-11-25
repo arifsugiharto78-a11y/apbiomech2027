@@ -1,0 +1,63 @@
+---
+import conference from '../data/conference.json';
+import config from '../data/registration-system.json';
+import {RegistrationCore as core} from '../../registration/core.mjs';
+import {withBase} from '../utils/url';
+import Field from './RegistrationField.astro';
+import '../styles/registration-form.css';
+const demo=config.mode==='DEMO';
+const agreements=[
+  ['privacy','I have read the privacy notice and acknowledge how registration information will be handled.'],
+  ['terms','I have read the registration terms and understand that acknowledgment is not final confirmation.'],
+  ['accuracy','I confirm that the information entered is accurate for this demonstration or registration.']
+];
+---
+<section class="registration-intro" aria-labelledby="registration-intro-title">
+  <p class="eyebrow">{config.mode} MODE</p><h2 id="registration-intro-title">Participant registration</h2>
+  <p><strong>{conference.name}</strong><br/>{conference.dateLabel} · {conference.location}<br/>Hosted by {conference.host}</p>
+  <div class="notice"><strong>{demo?'Try the form with synthetic information only.':config.mode==='TEST'?'Test registration — synthetic information only.':'Complete your participant details.'}</strong><p>{demo?'This demonstration stays in this page. It sends no participant information and no emails. Use the sample details below or an email ending in @example.invalid.':config.mode==='TEST'?'Only committee-allowlisted test email addresses are accepted. Information is sent to a separate private test database.':'Your details will be sent to the committee’s approved private registration database.'}</p></div>
+  <p>Fields marked * are required. A family name is optional for participants with a single-word name. Scientific abstracts are submitted separately through Microsoft CMT.</p>
+  <p class="registration-payment">Registration fees and payment arrangements will be announced once confirmed by the organizing committee.</p>
+  {demo&&<button type="button" class="button secondary" id="registration-sample">Fill synthetic example</button>}
+</section>
+<noscript><div class="notice"><strong>JavaScript is required to use this form.</strong><p>No details can be submitted from this page while JavaScript is disabled.</p></div></noscript>
+<form id="participant-registration" class="registration-form" method="post" target="_blank" enctype="application/x-www-form-urlencoded" autocomplete="off" data-mode={config.mode} data-endpoint={config.endpoint} data-consent-version={config.consentVersion} novalidate>
+  <input type="hidden" name="mode" value={config.mode}/><input type="hidden" name="consentVersion" value={config.consentVersion}/><input type="hidden" name="submissionKey"/><input type="hidden" name="startedAt"/>
+  <div class="registration-trap" aria-hidden="true"><label for="reg-website">Leave this field empty</label><input id="reg-website" name="website" tabindex="-1" autocomplete="off"/></div>
+  <div id="registration-errors" class="registration-errors" role="alert" tabindex="-1" hidden><strong>Please review these details.</strong><ul></ul></div>
+  <fieldset><legend>A · Personal information</legend><div class="registration-fields">
+    <Field name="title" label="Academic title" max={40}/><Field name="givenName" label="Given name or single name" required max={100}/>
+    <Field name="familyName" label="Family name" max={100} hint="Leave blank if you use a single-word name."/>
+    <Field name="email" label="Email address" type="email" required max={254} hint={demo?'Synthetic example: demo.participant@example.invalid':undefined}/>
+    <Field name="confirmEmail" label="Confirm email address" type="email" required max={254}/><Field name="phone" label="Phone number with country code" type="tel" required max={32} hint="For example: +62 812 0000 0000"/>
+  </div></fieldset>
+  <fieldset><legend>B · Institutional information</legend><div class="registration-fields">
+    <Field name="institution" label="University, institution, or company" required/><Field name="department" label="Department or faculty" required hint="Enter Not applicable if needed."/>
+    <Field name="country" label="Country or region" required max={100}/><Field name="position" label="Professional position" required max={100}/>
+  </div></fieldset>
+  <fieldset><legend>C · Registration information</legend><div class="registration-fields">
+    <Field name="category" label="Registration category" required options={core.choices.category}/><Field name="membership" label="APAB membership" required options={core.choices.membership}/>
+    <Field name="participation" label="Participation type" required options={core.choices.participation}/>
+  </div>
+  <fieldset id="presenter-fields" class="conditional-fields" hidden disabled><legend>Presentation information</legend><div class="registration-fields"><Field name="presentation" label="Presentation type" required options={core.choices.presentation}/><Field name="abstractIds" label="Microsoft CMT abstract IDs" max={300} hint="Optional. Enter multiple IDs separated by commas. Do not upload abstracts here."/></div></fieldset>
+  <fieldset id="student-fields" class="conditional-fields" hidden disabled><legend>Student information</legend><div class="registration-fields"><Field name="degree" label="Degree programme" required max={120}/><Field name="studentStatus" label="Student status" required options={core.choices.studentStatus}/></div></fieldset>
+  </fieldset>
+  <fieldset><legend>D · Additional information</legend><div class="registration-fields">
+    <Field name="dietary" label="Dietary requirements" type="textarea" max={500} hint="Describe only the arrangements needed; avoid medical histories."/>
+    <Field name="invitation" label="Do you require an invitation letter?" required options={core.choices.invitation}/><Field name="workshop" label="Workshop participation interest" required options={core.choices.workshop} hint="Expression of interest only. Workshops are not yet confirmed."/>
+    <Field name="accessibility" label="Accessibility or special arrangements" type="textarea" max={500} hint="Optional. Describe practical arrangements only; do not provide diagnoses or documents."/>
+    <Field name="comments" label="Additional comments" type="textarea" max={1000}/>
+  </div></fieldset>
+  <fieldset><legend>E · Agreements</legend><p><a href={withBase('privacy/')} target="_blank" rel="noopener">Read the privacy notice ↗</a> · <a href={withBase('terms/')} target="_blank" rel="noopener">Read the registration terms ↗</a></p>
+    {demo&&<p class="field-hint">These notices are drafts for committee review. Checking these boxes demonstrates the form and does not create a conference registration.</p>}
+    {agreements.map(([name,label])=><div class="agreement-field"><label for={`reg-${name}`}><input id={`reg-${name}`} type="checkbox" name={name} value="yes" required aria-describedby={`error-${name}`}/><span>{label} *</span></label><span class="field-error" id={`error-${name}`}></span></div>)}
+    {config.mode!=='LIVE'&&<div class="agreement-field"><label for="reg-synthetic"><input id="reg-synthetic" name="synthetic" type="checkbox" value="yes" required aria-describedby="error-synthetic"/><span>I am using synthetic test information only. *</span></label><span id="error-synthetic" class="field-error"></span></div>}
+  </fieldset>
+  <div class="registration-actions"><button type="submit" id="registration-submit" class="button" disabled>{demo?'Preview acknowledgment':'Send registration details'}</button><p id="registration-progress" role="status" aria-live="polite"></p></div>
+  <div id="registration-result" class="registration-result" role="status" tabindex="-1" hidden></div>
+  <button type="button" id="registration-retry" class="button secondary" hidden>Retry the same submission</button>
+</form>
+<script>
+  import {initRegistrationForm} from '../registration/form';
+  initRegistrationForm();
+</script>

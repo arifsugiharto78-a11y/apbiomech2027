@@ -125,7 +125,7 @@ In `src/data/conference.json`, set `cmtUrl` to the exact committee-approved HTTP
 
 ## 10. Activate registration
 
-Set `registrationUrl` to the exact approved HTTPS registration-service URL and `registrationOpen` to `true` in central configuration. Both are required. Do not add payment forms, API keys, credentials, or personal-data collection to this static website. The committee-selected service handles registration and payment.
+The owner-authorized participant form now lives at `registration/portal/`. Configure it in `src/data/registration-system.json`; keep DEMO active by default. The legacy `registrationUrl` and `registrationOpen` flags do not activate this form. Follow `REGISTRATION_SYSTEM.md` and `GOOGLE_APPS_SCRIPT_SETUP.md` for the separate private TEST backend, shared validation build, acknowledgment email and LIVE approval guards. Use the selected personal Google account; do not substitute the connected university account. No API secrets, participant rows or database identifiers belong in GitHub. The committee must explicitly approve LIVE collection and privacy/terms before activation. Payment is independently disabled.
 
 ## 11. Add sponsors and exhibitors
 

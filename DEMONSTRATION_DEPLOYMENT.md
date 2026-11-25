@@ -13,7 +13,7 @@ Prepared for the personal account **arifsugiharto78-a11y**. No organization, rep
 
 The website displays the committee-review notification configured in `src/data/conference.json` under `preview`. Leave `launchStatus: "development"` and `preview.enabled: true` during evaluation. All pages retain noindex/nofollow. The notification does not restrict access: the requested public demonstration is accessible to anyone with the link and needs no GitHub login.
 
-Confirmed deadlines and 2027 registration fees remain “To be announced.” The previously requested estimates remain clearly labelled planning references. The unavailable CMT, registration, and document actions remain disabled.
+Confirmed deadlines and 2027 registration fees remain “To be announced.” The previously requested estimates remain clearly labelled planning references. CMT and unavailable document actions remain disabled. The participant form is available in DEMO mode; no participant information or email is submitted. See REGISTRATION_SYSTEM.md for backend templates and activation requirements. Readiness numbers below describe the original deployment; consult Actions for current checks.
 
 ## Authorized publication sequence
 

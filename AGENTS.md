@@ -1,6 +1,6 @@
 # 14th APBiomech development guidance
 
-- Static Astro website. Keep all pages pre-rendered; no database, SSR, local registration forms, or payment processing.
+- Static Astro website. Keep all pages pre-rendered; no SSR or payment processing. The owner authorized the participant registration form and separate Google Apps Script/private Sheets backend templates on November 25, 2026. Keep DEMO active; do not collect real participants or activate LIVE without explicit committee authorization.
 - Conference facts and external portal URLs belong in `src/data/conference.json`. Use null for unconfirmed details. Never fabricate people, logos, prices, deadlines, sponsorship, or venue information.
 - User-requested planning estimates are permitted when clearly labelled. Store estimates separately from approved fee/date fields, retain source URLs and currency, and document the adjustment method. Do not infer tax rules or membership discounts from the previous conference.
 - The official banner must remain intact. `npm run build` creates WebP without modifying the supplied PNG. Never substitute another banner or crop embedded text or logos.

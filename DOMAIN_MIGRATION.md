@@ -69,4 +69,6 @@ Wait for GitHub's DNS check and certificate provisioning to complete, then enabl
 
 ## Rollback
 
+Participant registration is independent of the domain migration. Keep `src/data/registration-system.json` in DEMO during this stage. Internal form/privacy/terms links use `withBase`; the future Apps Script native POST endpoint is an absolute HTTPS URL and does not depend on the GitHub Pages path. Re-test Google redirects, new-tab acknowledgment and retained-entry retry on the actual domain before approved LIVE activation. Changing DNS or `launchStatus` does not activate registration. Disable an already deployed backend separately if rolling back collection.
+
 If migration fails, restore `SITE_URL` and `BASE_PATH` to the known GitHub Pages preview values and rebuild. Coordinate Pages custom-domain and DNS changes with the domain owner; do not leave DNS pointing to a removed/unverified Pages binding. Keep domain verification in place. Record the final configuration for the next committee maintainer.

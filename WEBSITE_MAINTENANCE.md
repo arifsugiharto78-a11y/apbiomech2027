@@ -1,6 +1,6 @@
 # Website maintenance
 
-Readability sizing is centralized in `src/styles/readability.css`, loaded after the original design styles. Body text uses 18 px at the default browser setting, introductory text 20 px, controls/navigation 16 px, and supporting labels at least 14 px. Sizes use rem units so browser text preferences continue to work. Keep this scale on phones; allow layouts to stack instead of shrinking text. The navigation switches to a hamburger below 1320 px, and the phone header scrolls with the page to leave more room for reading.
+Readability sizing is centralized in `src/styles/readability.css`, loaded after the original design styles. Body text uses 18 px at the default browser setting, introductory text 20 px, and controls 16 px. At the owner's request, the header uses a compact 28 px wordmark, 13 px subtitle and 13–14 px desktop navigation to show all top-level links. The full navigation remains visible from 768 px, wrapping on tablets as needed; only narrower phones use the hamburger, with 16 px links and 44 px submenu buttons. Main content retains the larger reading scale. Sizes use rem units so browser text preferences continue to work. The phone header scrolls with the page to leave more room for reading.
 
 All paths below are relative to the repository root. Edit JSON with double quotes, no comments, and no trailing commas. Use `null` for unconfirmed values. Commit only committee-approved public information. The website is static; changes appear after a new build/deployment.
 

@@ -1,5 +1,7 @@
 # Website maintenance
 
+Readability sizing is centralized in `src/styles/readability.css`, loaded after the original design styles. Body text uses 18 px at the default browser setting, introductory text 20 px, controls/navigation 16 px, and supporting labels at least 14 px. Sizes use rem units so browser text preferences continue to work. Keep this scale on phones; allow layouts to stack instead of shrinking text. The navigation switches to a hamburger below 1320 px, and the phone header scrolls with the page to leave more room for reading.
+
 All paths below are relative to the repository root. Edit JSON with double quotes, no comments, and no trailing commas. Use `null` for unconfirmed values. Commit only committee-approved public information. The website is static; changes appear after a new build/deployment.
 
 ## 1. Update central conference information
@@ -199,3 +201,5 @@ The exact review notice is stored in `conference.json` under `preview.message`, 
 ## Conference name and APAB introduction
 
 Keep the full conference title and short display name separate from the APAB association name. The short conference label is `14th APBiomech`. The user-approved banner variant is `public/images/branding/apbiomech2027-hero-updated.png`; the original remains alongside it. `conference.json` controls the active `banner` and records `bannerOriginal`. Do not replace either without an approved asset. The supplied APAB text, author attribution, and official link are in `src/data/association.json`; `Association.astro` renders the full introduction and homepage summary.
+
+Planning estimates are displayed in IDR using the planningConversion object in registration.json. Its rate is IDR per one NZD (currently 10000, supplied by the owner). Original estimatedEarlyBird/estimatedRegular values stay in benchmark.currency (NZD); the view converts them for display. Change the configured rate to update all displayed estimates together. Confirmed fee fields use the separate approved currency and are not converted a second time.

@@ -1,5 +1,12 @@
 {
   "currency": null,
+  "planningConversion": {
+    "from": "NZD",
+    "to": "IDR",
+    "rate": 10000,
+    "basis": "User-specified planning exchange rate",
+    "date": "2026-11-25"
+  },
   "categories": [
     {
       "name": "Full registration",
@@ -62,6 +69,6 @@
     "currency": "NZD",
     "sourceYear": 2025,
     "sourceUrl": "https://www.apbiomec2025.auckland.ac.nz/registration/",
-    "note": "Provisional planning estimates use the published 2025 nominal prices, without inflation or currency conversion. These are not confirmed 14th APBiomech fees. Final billing currency, inclusions, and Indonesian tax treatment remain to be approved."
+    "note": "Provisional planning estimates use the published 2025 prices and are shown in Indonesian rupiah (IDR) using the planning exchange rate below. These are not confirmed 14th APBiomech fees. Final fees, inclusions, and Indonesian tax treatment remain to be approved."
   }
 }

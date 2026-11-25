@@ -45,6 +45,9 @@ test('programme data can be filtered and approved dates remain valid',()=>{
  }
  for(const row of json('dates'))if(row.date)assert.ok(Number.isFinite(new Date(row.date).getTime()));
  const fees=json('registration');
+ assert.equal(fees.planningConversion.from,fees.benchmark.currency,'Planning conversion must match the reference currency');
+ assert.ok(Number.isFinite(fees.planningConversion.rate)&&fees.planningConversion.rate>0,'Planning exchange rate must be positive');
+ assert.ok(/^[A-Z]{3}$/.test(fees.planningConversion.to),'Planning display currency must be an ISO code');
  for(const row of fees.categories)for(const field of ['earlyBird','regular'])if(row[field]!==null){assert.equal(typeof row[field],'number');assert.ok(row[field]>=0);assert.ok(fees.currency,'Fees require an approved currency');}
 });
 

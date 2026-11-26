@@ -7,7 +7,7 @@
   "timeZone": "Asia/Makassar",
   "location": "Bali, Indonesia",
   "host": "Institut Teknologi Bandung",
-  "faculty": "Faculty of Mechanical and Aerospace Engineering (FTMD)",
+  "faculty": "Faculty of Mechanical and Aerospace Engineering",
   "association": "Asian-Pacific Association for Biomechanics (APAB)",
   "email": null,
   "officialDomain": "https://apbiomech2027.org",
@@ -22,8 +22,8 @@
     "enabled": true,
     "message": "Website Preview — For Organizing Committee Review Only. Content is subject to revision before the official launch."
   },
-  "banner": "images/branding/apbiomech2027-hero-updated.png",
-  "bannerAlt": "14th APBiomech conference banner showing a Balinese temple, the full 14th Asian-Pacific Conference on Biomechanics title, APAB association and FTMD ITB branding, November 16–19, 2027, and Bali, Indonesia",
+  "banner": "images/branding/apbiomech2027-hero-itb.png",
+  "bannerAlt": "14th APBiomech conference banner showing a Balinese temple, the full 14th Asian-Pacific Conference on Biomechanics title, APAB association and ITB seals, November 16–19, 2027, and Bali, Indonesia",
   "logos": [
     {
       "name": "Asian-Pacific Association for Biomechanics (APAB)",
@@ -33,11 +33,6 @@
     {
       "name": "Institut Teknologi Bandung (ITB)",
       "image": "images/branding/itb-supplied.webp",
-      "kind": "institution"
-    },
-    {
-      "name": "Faculty of Mechanical and Aerospace Engineering, Institut Teknologi Bandung (FTMD ITB)",
-      "image": "images/branding/ftmd-itb-supplied.webp",
       "kind": "host"
     },
     {
@@ -59,7 +54,7 @@
   "sponsorshipProspectus": null,
   "programmeDownload": null,
   "welcome": [
-    "On behalf of the Organizing Committee, it is my great pleasure to invite you to the 14th Asian-Pacific Conference on Biomechanics (14th APBiomech), to be held in Bali, Indonesia, on November 16-19, 2027. Hosted by the Faculty of Mechanical and Aerospace Engineering, Institut Teknologi Bandung (FTMD ITB), under the auspices of the Asian-Pacific Association for Biomechanics (APAB), this will be the first time the APBiomech series is held in Indonesia.",
+    "On behalf of the Organizing Committee, it is my great pleasure to invite you to the 14th Asian-Pacific Conference on Biomechanics (14th APBiomech), to be held in Bali, Indonesia, on November 16-19, 2027. Hosted by the Faculty of Mechanical and Aerospace Engineering, Institut Teknologi Bandung, under the auspices of the Asian-Pacific Association for Biomechanics (APAB), this will be the first time the APBiomech series is held in Indonesia.",
     "Beyond the scientific programme, we hope you will take time to enjoy Bali's rich culture, natural beauty, and warm hospitality.",
     "Sampai jumpa di Bali. We look forward to seeing you there."
   ],
@@ -105,7 +100,7 @@
   "bannerOriginal": "images/branding/apbiomech2027-hero.png",
   "secretariatAddress": [
     "14th APBiomech Secretariat",
-    "Faculty of Mechanical and Aerospace Engineering (FTMD)",
+    "Faculty of Mechanical and Aerospace Engineering",
     "Institut Teknologi Bandung",
     "Jl. Ganesha No. 10, Bandung 40132, Indonesia"
   ]

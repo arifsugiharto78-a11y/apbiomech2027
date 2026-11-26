@@ -24,5 +24,4 @@
 }
 @media (max-width: 420px) {
   .chair-introduction { flex-direction: column; }
-  .brand-logos .kind-host { order: 5; flex-basis: 100%; width: 100%; height: 48px; }
 }

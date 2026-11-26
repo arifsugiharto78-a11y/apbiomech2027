@@ -87,7 +87,7 @@ Use `category: "keynote"` or `"invited"`. Set `approved: true` after approval. A
 
 Put photographs in `public/images/speakers/` or `public/images/committee/`. Use concise lowercase filenames without spaces. Use rights-cleared images, ideally compressed JPEG or WebP, with adequate resolution. Paths in JSON start with `images/`, without `public/` or a leading slash. For portraits, provide a square-friendly image; cards use a square crop. This does not apply to the official banner, which is never cropped.
 
-The user-supplied APAB, combined FTMD ITB, and Masyarakat Biomekanika Indonesia logos are now included. The combined FTMD ITB asset contains the ITB mark; it must not be separated or redrawn. Only original committee-supplied logo files may be used. Put files in `public/images/branding/`, then add to `conference.json`:
+The active supplied logos are APAB, ITB, and Masyarakat Biomekanika Indonesia. Per the owner's November 26, 2026 instruction, use the standalone ITB logo as `kind: "host"`; do not display the combined FTMD ITB logo. Write “Faculty of Mechanical and Aerospace Engineering” without its acronym. Earlier branding assets remain for provenance. The active banner is `apbiomech2027-hero-itb.png`, with its edit recorded in `public/images/branding/BANNER_UPDATE.md`. Use supplied logo files without redrawing their marks. Put files in `public/images/branding/`, then add to `conference.json`:
 
 ```json
 "logos": [

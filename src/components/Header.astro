@@ -14,7 +14,7 @@ const brandYear=conference.abbreviation.match(/\d{4}$/)?.[0] || '';
 <header class="site-header">
   <div class="container brand-row">
     <a class="wordmark" href={withBase('')} aria-label={`${conference.abbreviation} home`}><span>{brandName}<span class="wordmark-year">{brandYear}</span></span><small>ASIAN-PACIFIC CONFERENCE ON BIOMECHANICS</small></a>
-    {logos.length?<div class="brand-logos" aria-label="Supplied conference and institutional logos">{logos.map(logo=><img class:list={['official-logo',`kind-${logo.kind}`]} src={withBase(logo.image)} alt={logo.name} width={logo.kind==='host'?210:64} height={logo.kind==='host'?76:64}/>)}</div>:<div class="host-brand"><span class="label">HOSTED BY</span><strong>{conference.host}</strong><small>{conference.faculty}</small></div>}
+    {logos.length?<div class="brand-logos" aria-label="Supplied conference and institutional logos">{logos.map(logo=><img class:list={['official-logo',`kind-${logo.kind}`]} src={withBase(logo.image)} alt={logo.name} width="64" height="64"/>)}</div>:<div class="host-brand"><span class="label">HOSTED BY</span><strong>{conference.host}</strong><small>{conference.faculty}</small></div>}
     <button class="mobile-toggle" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false"><Icon name="menu"/></button>
   </div>
   <div class="nav-border"><nav id="primary-nav" class="container primary-nav" aria-label="Main navigation">

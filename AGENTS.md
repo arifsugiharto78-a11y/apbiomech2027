@@ -5,6 +5,7 @@
 - User-requested planning estimates are permitted when clearly labelled. Store estimates separately from approved fee/date fields, retain source URLs and currency, and document the adjustment method. Do not infer tax rules or membership discounts from the previous conference.
 - The official banner must remain intact. `npm run build` creates WebP without modifying the supplied PNG. Never substitute another banner or crop embedded text or logos.
 - The user explicitly approved a separate conference-name variant: `apbiomech2027-hero-updated.png`. It reads `14th APBiomech`; the original supplied PNG is retained. APAB is the association only. Preserve both assets and their documented provenance.
+- The owner requested ITB-only host branding on November 26, 2026. Use the supplied ITB seal for the host institution, omit the combined FTMD ITB logo, and write the full faculty name without its acronym. The active `apbiomech2027-hero-itb.png` is a separate authorized variant removing the FTMD wordmark; retain the earlier banner assets as provenance.
 - Only publish approved profiles and content. Keep proposed topics clearly labelled until approved.
 - All internal URLs must use `withBase` from `src/utils/url.ts`. Test `/apbiomech2027/` and `/`.
 - Maintain accessible native controls, visible focus, semantic headings, keyboard dropdowns, and reduced-motion support. Use minimal client JavaScript.

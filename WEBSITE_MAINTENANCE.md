@@ -115,7 +115,7 @@ Update `src/data/pages.ts` with approved abstract word limits, formatting, revie
 
 ## 8. Update registration fees
 
-Edit `src/data/registration.json`. Provisional reference amounts are in `estimatedEarlyBird` and `estimatedRegular`; their original NZD currency, source, and limitations are in `benchmark`. These are separate from actual approved fees and do not imply New Zealand GST applies in Indonesia. Keep the source information when updating estimates. Set `currency` to the approved ISO currency code before entering numeric fees. Each category has `name`, `earlyBird`, and `regular`. Use numbers for confirmed amounts, including zero if an approved category is free. Keep `null` for pending fees. Add/remove categories according to the approved structure.
+Edit src/data/registration.json. International estimates are stored in estimatedEarlyBird and estimatedRegular and displayed directly in planningCurrency (USD). Keep approved fee fields and currency null until approved. Indonesian and accompanying-person estimates remain null. The benchmark records the supplied 2027 draft; previousPlanningReference preserves the superseded NZD/IDR planning context without applying that conversion.
 
 Update the accompanying introductions, inclusions, taxes, eligibility, payment information, and cancellation policy in `src/data/pages.ts`. Do not activate registration until the service, privacy terms, fees, and policies are approved.
 
@@ -204,4 +204,8 @@ The exact review notice is stored in `conference.json` under `preview.message`, 
 
 Keep the full conference title and short display name separate from the APAB association name. The short conference label is `14th APBiomech`. The user-approved banner variant is `public/images/branding/apbiomech2027-hero-updated.png`; the original remains alongside it. `conference.json` controls the active `banner` and records `bannerOriginal`. Do not replace either without an approved asset. The supplied APAB text, author attribution, and official link are in `src/data/association.json`; `Association.astro` renders the full introduction and homepage summary.
 
-Planning estimates are displayed in IDR using the planningConversion object in registration.json. Its rate is IDR per one NZD (currently 10000, supplied by the owner). Original estimatedEarlyBird/estimatedRegular values stay in benchmark.currency (NZD); the view converts them for display. Change the configured rate to update all displayed estimates together. Confirmed fee fields use the separate approved currency and are not converted a second time.
+The active provisional timetable is in dates.json and planning.json, selected from 05-important-dates.md. Do not regenerate it from 2025 lead times. Deadlines use WIB (UTC+7), while the conference countdown uses Bali time (UTC+8). Changes in the local editorial source folder are not imported automatically; update the normalized JSON and page content after review.
+
+## Supplied content and imagery
+
+The local APBiomech2027-Website-Content folder is an editorial inbox excluded from Git publication. Preserve the originals. Publish reviewed text through src/data and optimized assets through public/images. welcome.json controls the chair message and photo; conference.json includes venue.photos, baliPhotos and active logos. See CONTENT_IMPORT_REVIEW.md for decisions and withheld drafts. Never commit working documents with review comments or internal notes as public downloads.

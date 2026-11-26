@@ -27,12 +27,17 @@
   "logos": [
     {
       "name": "Asian-Pacific Association for Biomechanics (APAB)",
-      "image": "images/branding/apab-logo.jpg",
+      "image": "images/branding/apab-supplied.webp",
       "kind": "association"
     },
     {
+      "name": "Institut Teknologi Bandung (ITB)",
+      "image": "images/branding/itb-supplied.webp",
+      "kind": "institution"
+    },
+    {
       "name": "Faculty of Mechanical and Aerospace Engineering, Institut Teknologi Bandung (FTMD ITB)",
-      "image": "images/branding/ftmd-itb-logo.png",
+      "image": "images/branding/ftmd-itb-supplied.webp",
       "kind": "host"
     },
     {
@@ -41,14 +46,22 @@
       "kind": "supplied-mark"
     }
   ],
-  "baliPhotos": [],
+  "baliPhotos": [
+    {
+      "image": "images/bali/bali-scenery.webp",
+      "width": 1000,
+      "height": 1250,
+      "alt": "Balinese temple beside water with mountains and a sunset sky",
+      "credit": "Image supplied for the conference website."
+    }
+  ],
   "abstractTemplate": null,
   "sponsorshipProspectus": null,
   "programmeDownload": null,
   "welcome": [
-    "On behalf of the Organizing Committee, we are pleased to welcome researchers, academics, clinicians, engineers, industry professionals, and students to the 14th Asian-Pacific Conference on Biomechanics (14th APBiomech), to be held in Bali, Indonesia, on November 16–19, 2027.",
-    "Hosted by Institut Teknologi Bandung, the conference aims to provide an international platform for presenting advances in biomechanics, exchanging scientific knowledge, and fostering interdisciplinary collaboration across the Asia-Pacific region and beyond.",
-    "We look forward to welcoming the biomechanics community to Indonesia for an inspiring scientific and cultural experience."
+    "On behalf of the Organizing Committee, it is my great pleasure to invite you to the 14th Asian-Pacific Conference on Biomechanics (14th APBiomech), to be held in Bali, Indonesia, on November 16-19, 2027. Hosted by the Faculty of Mechanical and Aerospace Engineering, Institut Teknologi Bandung (FTMD ITB), under the auspices of the Asian-Pacific Association for Biomechanics (APAB), this will be the first time the APBiomech series is held in Indonesia.",
+    "Beyond the scientific programme, we hope you will take time to enjoy Bali's rich culture, natural beauty, and warm hospitality.",
+    "Sampai jumpa di Bali. We look forward to seeing you there."
   ],
   "venue": {
     "name": "Nusa Dua Beach Hotel & Spa – Handwritten Collection",
@@ -56,7 +69,44 @@
     "url": "https://www.nusaduahotel.com/",
     "address": "Kawasan Pariwisata Nusa Dua, Lot North 4, Jl. Nusa Dua, Benoa, South Kuta, Badung Regency, Bali 80363, Indonesia",
     "mapUrl": null,
-    "status": "User-specified conference venue"
+    "status": "User-specified conference venue",
+    "photos": [
+      {
+        "image": "images/venue/ndbhs-aerial.webp",
+        "width": 1400,
+        "height": 1026,
+        "alt": "Aerial view of Nusa Dua Beach Hotel & Spa and the coastline",
+        "credit": "Image supplied for the conference website."
+      },
+      {
+        "image": "images/venue/ndbhs-keraton-room.webp",
+        "width": 1400,
+        "height": 792,
+        "alt": "Keraton meeting room at Nusa Dua Beach Hotel & Spa",
+        "credit": "Image supplied for the conference website."
+      },
+      {
+        "image": "images/venue/ndbhs-candi-bentar.webp",
+        "width": 1400,
+        "height": 1049,
+        "alt": "Candi Bentar outdoor event setting at Nusa Dua Beach Hotel & Spa",
+        "credit": "Image supplied for the conference website."
+      },
+      {
+        "image": "images/venue/ndbhs-budaya-cultural-theater.webp",
+        "width": 1400,
+        "height": 1050,
+        "alt": "Budaya Cultural Theater at Nusa Dua Beach Hotel & Spa",
+        "credit": "Image supplied for the conference website."
+      }
+    ],
+    "phone": "+62 361 771 210"
   },
-  "bannerOriginal": "images/branding/apbiomech2027-hero.png"
+  "bannerOriginal": "images/branding/apbiomech2027-hero.png",
+  "secretariatAddress": [
+    "14th APBiomech Secretariat",
+    "Faculty of Mechanical and Aerospace Engineering (FTMD)",
+    "Institut Teknologi Bandung",
+    "Jl. Ganesha No. 10, Bandung 40132, Indonesia"
+  ]
 }

@@ -1,0 +1,28 @@
+.chair-introduction { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
+.chair-portrait { width: 128px; height: 128px; flex: 0 0 128px; object-fit: contain; border-radius: 8px; border: 1px solid var(--line); }
+.chair-introduction h2 { font-size: 1.25rem; line-height: 1.4; margin-bottom: 8px; }
+.chair-introduction p:not(.eyebrow) { font-size: .875rem; line-height: 1.7; margin: 0; color: var(--muted); }
+.chair-introduction .eyebrow { margin-bottom: 8px; }
+.welcome-greeting { color: var(--blue); font-weight: 600; }
+.chair-welcome-full .welcome-copy { max-width: none; }
+.chair-welcome-full .welcome-copy .lead { font-size: 1rem; }
+.chair-welcome-full .chair-portrait { width: 160px; height: 160px; flex-basis: 160px; }
+.venue-gallery-section { margin: 40px 0; }
+.venue-gallery { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; margin-top: 24px; }
+.venue-gallery figure { margin: 0; min-width: 0; }
+.venue-gallery img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.venue-gallery figcaption { margin-top: 10px; font-size: .875rem; line-height: 1.6; color: var(--muted); }
+.fee-period { display: block; margin-top: 6px; font-size: .875rem; font-weight: 400; }
+.profile-card .preview-profile { font-size: .875rem; color: var(--muted); }
+.bali-side img { display: block; width: min(100%,320px); height: auto; margin-inline: auto; border-radius: 6px; }
+.bali-side figure { margin: 0; }
+@media (max-width: 700px) {
+  .chair-introduction { align-items: flex-start; gap: 18px; }
+  .chair-portrait, .chair-welcome-full .chair-portrait { width: 96px; height: 96px; flex-basis: 96px; }
+  .brand-logos { flex-wrap: wrap; gap: 12px 16px; }
+  .venue-gallery { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 420px) {
+  .chair-introduction { flex-direction: column; }
+  .brand-logos .kind-host { order: 5; flex-basis: 100%; width: 100%; height: 48px; }
+}

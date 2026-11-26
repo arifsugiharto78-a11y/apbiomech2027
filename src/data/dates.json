@@ -3,17 +3,28 @@
     "id": "registration-open",
     "label": "Registration opens",
     "date": null,
-    "estimatedDate": "2027-01-28",
+    "estimatedDate": "2027-04-19",
     "estimatedLabel": null,
-    "referenceDate": "2025-01-30"
+    "referenceDate": null,
+    "sourceDocument": "08-registration.md"
   },
   {
     "id": "abstracts-open",
-    "label": "Call for abstracts opens",
+    "label": "Submission opens",
     "date": null,
     "estimatedDate": "2027-02-22",
     "estimatedLabel": null,
-    "referenceDate": "2025-02-24"
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
+  },
+  {
+    "id": "keynotes-first",
+    "label": "Keynote speakers announcement (first wave)",
+    "date": null,
+    "estimatedDate": "2027-04-16",
+    "estimatedLabel": null,
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
   },
   {
     "id": "abstracts-close",
@@ -21,7 +32,8 @@
     "date": null,
     "estimatedDate": "2027-05-23",
     "estimatedLabel": null,
-    "referenceDate": "2025-05-25"
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
   },
   {
     "id": "acceptance",
@@ -29,7 +41,17 @@
     "date": null,
     "estimatedDate": "2027-06-23",
     "estimatedLabel": null,
-    "referenceDate": "2025-06-25"
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
+  },
+  {
+    "id": "keynotes-full",
+    "label": "Keynote speakers announcement (full line-up)",
+    "date": null,
+    "estimatedDate": "2027-07-16",
+    "estimatedLabel": null,
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
   },
   {
     "id": "early-bird",
@@ -37,7 +59,8 @@
     "date": null,
     "estimatedDate": "2027-07-28",
     "estimatedLabel": null,
-    "referenceDate": "2025-07-30"
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
   },
   {
     "id": "author-registration",
@@ -45,7 +68,8 @@
     "date": null,
     "estimatedDate": "2027-08-02",
     "estimatedLabel": null,
-    "referenceDate": "2025-08-04"
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
   },
   {
     "id": "programme",
@@ -53,7 +77,35 @@
     "date": null,
     "estimatedDate": null,
     "estimatedLabel": "Mid-August 2027",
-    "referenceDate": null
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
+  },
+  {
+    "id": "late-news-close",
+    "label": "Late-news abstract submission deadline",
+    "date": null,
+    "estimatedDate": "2027-08-20",
+    "estimatedLabel": null,
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
+  },
+  {
+    "id": "late-news-notification",
+    "label": "Late-news abstract notification",
+    "date": null,
+    "estimatedDate": "2027-09-10",
+    "estimatedLabel": null,
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
+  },
+  {
+    "id": "poster-at-glance",
+    "label": "Poster at a Glance submission deadline",
+    "date": null,
+    "estimatedDate": "2027-11-08",
+    "estimatedLabel": null,
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
   },
   {
     "id": "regular-registration",
@@ -61,15 +113,16 @@
     "date": null,
     "estimatedDate": "2027-11-08",
     "estimatedLabel": null,
-    "referenceDate": "2025-11-10"
+    "referenceDate": null,
+    "sourceDocument": "05-important-dates.md"
   },
   {
     "id": "conference",
     "label": "Conference",
-    "source": "conference",
     "date": null,
     "estimatedDate": null,
     "estimatedLabel": null,
-    "referenceDate": null
+    "referenceDate": null,
+    "source": "conference"
   }
 ]

@@ -1,0 +1,18 @@
+{
+  "importedAt": "2026-11-26",
+  "sourceFolder": "APBiomech2027-Website-Content",
+  "scheduleSource": "05-important-dates.md",
+  "registrationOpeningSource": "08-registration.md",
+  "feesSource": "08-registration.md",
+  "excludedDrafts": [
+    "Unconfirmed keynote profile",
+    "Committee placeholders",
+    "Unapproved abstract template",
+    "Sponsorship prospectus containing placeholders and review markup"
+  ],
+  "assetNotes": [
+    "The file named logo-itb.png contains SVG data; normalized to a correctly encoded WebP for publication.",
+    "Source filenames ending .JPG are normalized in the public asset paths.",
+    "Original supplied files are preserved in the local import folder, which is excluded from Git publication."
+  ]
+}

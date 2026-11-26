@@ -1,0 +1,5 @@
+---
+import conference from '../data/conference.json';
+import {withBase} from '../utils/url';
+---
+<section class="venue-gallery-section" aria-labelledby="venue-gallery-title"><h2 id="venue-gallery-title">Discover the conference venue</h2><p class="caption">Supplied hotel imagery. Meeting-room allocations and social events remain subject to committee confirmation.</p><div class="venue-gallery">{conference.venue.photos.map(photo=><figure><img src={withBase(photo.image)} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy"/><figcaption>{photo.alt}</figcaption></figure>)}</div></section>

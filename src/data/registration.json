@@ -1,50 +1,30 @@
 {
   "currency": null,
-  "planningConversion": {
-    "from": "NZD",
-    "to": "IDR",
-    "rate": 10000,
-    "basis": "User-specified planning exchange rate",
-    "date": "2026-11-25"
-  },
+  "planningCurrency": "USD",
   "categories": [
     {
-      "name": "Full registration",
+      "name": "International — Regular",
       "earlyBird": null,
       "regular": null,
-      "estimatedEarlyBird": 800,
-      "estimatedRegular": 900
+      "estimatedEarlyBird": 500,
+      "estimatedRegular": 600
     },
     {
-      "name": "Student",
+      "name": "International — Student",
       "earlyBird": null,
       "regular": null,
-      "estimatedEarlyBird": 400,
-      "estimatedRegular": 500
+      "estimatedEarlyBird": 300,
+      "estimatedRegular": 350
     },
     {
-      "name": "APAB member",
-      "earlyBird": null,
-      "regular": null,
-      "estimatedEarlyBird": null,
-      "estimatedRegular": null
-    },
-    {
-      "name": "Non-member",
+      "name": "Indonesian — Regular",
       "earlyBird": null,
       "regular": null,
       "estimatedEarlyBird": null,
       "estimatedRegular": null
     },
     {
-      "name": "International participant",
-      "earlyBird": null,
-      "regular": null,
-      "estimatedEarlyBird": null,
-      "estimatedRegular": null
-    },
-    {
-      "name": "Local participant",
+      "name": "Indonesian — Student",
       "earlyBird": null,
       "regular": null,
       "estimatedEarlyBird": null,
@@ -56,19 +36,25 @@
       "regular": null,
       "estimatedEarlyBird": null,
       "estimatedRegular": null
-    },
-    {
-      "name": "Workshop participant",
-      "earlyBird": null,
-      "regular": null,
-      "estimatedEarlyBird": null,
-      "estimatedRegular": null
     }
   ],
   "benchmark": {
-    "currency": "NZD",
+    "currency": "USD",
+    "sourceYear": 2027,
+    "sourceDocument": "08-registration.md",
+    "sourceUrl": null,
+    "note": "Provisional international fees from the supplied 2027 registration proposal are shown in USD. Indonesian participant and accompanying-person fees are to be announced. Final fees, inclusions, taxes and payment arrangements require committee approval."
+  },
+  "previousPlanningReference": {
     "sourceYear": 2025,
+    "currency": "NZD",
     "sourceUrl": "https://www.apbiomec2025.auckland.ac.nz/registration/",
-    "note": "Provisional planning estimates use the published 2025 prices and are shown in Indonesian rupiah (IDR) using the planning exchange rate below. These are not confirmed 14th APBiomech fees. Final fees, inclusions, and Indonesian tax treatment remain to be approved."
+    "conversion": {
+      "from": "NZD",
+      "to": "IDR",
+      "rate": 10000,
+      "basis": "User-specified planning exchange rate",
+      "date": "2026-11-25"
+    }
   }
 }

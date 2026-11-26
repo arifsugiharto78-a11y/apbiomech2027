@@ -16,14 +16,18 @@ import AnnouncementCards from './AnnouncementCards.astro';
 import Faq from './Faq.astro';
 import VenueCard from './VenueCard.astro';
 import Association from './Association.astro';
+import WelcomeMessage from './WelcomeMessage.astro';
+import VenueGallery from './VenueGallery.astro';
 interface Props {page:ConferencePage;}
 const {page}=Astro.props;
 const path=page.path;
 const photos=conference.baliPhotos as {image:string;alt:string;credit:string}[];
 ---
 <div class="prose">{page.paragraphs?.map(paragraph=><p>{paragraph}</p>)}</div>
+{path==='about/'&&<WelcomeMessage full/>}
 {path==='about/apab/'&&<Association full/>}
 {['travel/','travel/accommodation/','travel/transportation/'].includes(path)&&<VenueCard/>}
+{path==='travel/'&&<VenueGallery/>}
 {page.blocks&&<div class="information-blocks">{page.blocks.map(block=><section><h2>{block.title}</h2><p>{block.text}</p></section>)}</div>}
 {path==='programme/topics/'&&<Topics/>}
 {path==='programme/'&&<><Programme/><DownloadButton path={conference.programmeDownload} label="Download programme"/></>}

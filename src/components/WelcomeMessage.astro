@@ -1,0 +1,11 @@
+---
+import message from '../data/welcome.json';
+import {withBase} from '../utils/url';
+interface Props {full?:boolean;}
+const {full=false}=Astro.props;
+const paragraphs=full?message.paragraphs:[message.paragraphs[0],message.paragraphs.at(-1)!];
+---
+<section class:list={['chair-welcome',{'chair-welcome-full':full}]} aria-label="Conference chair welcome message">
+  <div class="chair-introduction"><img class="chair-portrait" src={withBase(message.chair.image)} alt={message.chair.name} width="160" height="160" loading="lazy"/><div><p class="eyebrow">{message.statusLabel}</p><h2>{message.chair.name}</h2><p>{message.chair.role}, 14th APBiomech<br/>{message.chair.institution}</p></div></div>
+  <div class="welcome-copy">{full&&<p>{message.salutation}</p>}<p class="welcome-greeting">{message.greeting}</p>{paragraphs.map((paragraph,i)=><p class:list={{lead:i===0}}>{paragraph}</p>)}{full?<div class="welcome-signature"><span class="signature-line"></span><div><p>{message.closing}</p><strong>{message.chair.name}</strong><span>{message.chair.role}, 14th APBiomech</span><span>{message.chair.institution}, {message.chair.country}</span></div></div>:<a class="text-link" href={withBase('about/')}>Read the full welcome message →</a>}</div>
+</section>

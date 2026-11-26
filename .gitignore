@@ -17,3 +17,5 @@ work/
 .codex/
 *.log
 .DS_Store
+# Local editorial source package; publish only reviewed content and optimized assets.
+/src/data/APBiomech2027-Website-Content/

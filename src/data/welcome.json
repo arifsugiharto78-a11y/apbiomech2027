@@ -1,0 +1,25 @@
+{
+  "status": "draft",
+  "statusLabel": "Welcome message · committee preview",
+  "salutation": "Dear Colleagues and Friends,",
+  "greeting": "Selamat datang! Welcome!",
+  "paragraphs": [
+    "On behalf of the Organizing Committee, it is my great pleasure to invite you to the 14th Asian-Pacific Conference on Biomechanics (14th APBiomech), to be held in Bali, Indonesia, on November 16-19, 2027. Hosted by the Faculty of Mechanical and Aerospace Engineering, Institut Teknologi Bandung (FTMD ITB), under the auspices of the Asian-Pacific Association for Biomechanics (APAB), this will be the first time the APBiomech series is held in Indonesia.",
+    "Indonesia is a nation of more than 17,000 islands, each with its own character, connected by the sea. Biomechanics is much the same. Cell and molecular mechanics, tissue engineering, cardiovascular and respiratory flows, orthopaedics, sports science, rehabilitation, and medical device innovation are each distinct islands of expertise, and the field moves forward when they connect.",
+    "Bali also offers a lesson in collaboration. For centuries, Balinese farmers have shared water through subak, a cooperative irrigation system guided by Tri Hita Karana, the philosophy of harmony among people, nature, and the spiritual world. We hope this conference reflects the same spirit. We want senior researchers to share openly, young scientists to find mentors and partners, and clinicians, engineers, and industry to work toward common goals.",
+    "The conference will bring together researchers, clinicians, engineers, industry professionals, and students to share advances across the full breadth of biomechanics, from cells and tissues to human movement and intelligent systems. Developed with an international Scientific Advisory Committee, the scientific programme will feature plenary and invited lectures by leading experts from the Asia-Pacific region and beyond. We especially encourage students and early-career researchers to join us. Some of the most lasting collaborations begin with a conversation over coffee between sessions.",
+    "Beyond the scientific programme, we hope you will take time to enjoy Bali's rich culture, natural beauty, and warm hospitality.",
+    "Sampai jumpa di Bali. We look forward to seeing you there."
+  ],
+  "closing": "Warm regards,",
+  "chair": {
+    "name": "Prof. Ir. Andi Isra Mahyuddin, Ph.D.",
+    "role": "Conference Chair",
+    "institution": "Faculty of Mechanical and Aerospace Engineering, Institut Teknologi Bandung",
+    "country": "Indonesia",
+    "image": "images/committee/chair-andi-isra-mahyuddin.webp",
+    "width": 800,
+    "height": 800
+  },
+  "sourceDocument": "01-welcome-message.md"
+}

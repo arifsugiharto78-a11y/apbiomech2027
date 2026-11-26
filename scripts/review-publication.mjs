@@ -5,6 +5,7 @@ const excluded=new Set(['.git','node_modules','dist','.astro','work','.openai','
 const records=[];const findings=[];
 function walk(dir){for(const name of readdirSync(dir)){
  const absolute=path.join(dir,name);const relative=path.relative(root,absolute).replaceAll('\\','/');
+ if(relative==='src/data/APBiomech2027-Website-Content'||relative.startsWith('src/data/APBiomech2027-Website-Content/'))continue;
  if(excluded.has(name))continue;
  const stat=lstatSync(absolute);
  if(stat.isSymbolicLink()){findings.push(`${relative}: symbolic link needs review`);continue;}

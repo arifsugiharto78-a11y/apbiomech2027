@@ -3,6 +3,11 @@
   "referenceConferenceStart": "2025-11-18",
   "referenceUrl": "https://www.apbiomec2025.auckland.ac.nz/registration/",
   "submissionReferenceUrl": "https://www.apbiomec2025.auckland.ac.nz/submissions/",
-  "method": "Estimated dates preserve the number of days before the conference start in the 2025 schedule. Mid-August remains approximate.",
-  "earlyBirdNote": "The 2025 submission text also mentions June 20. These estimates use July 30 from the registration pricing table and key-dates list. All 2027 estimates require committee approval."
+  "method": "The 2027 schedule is a provisional timetable supplied for committee review. All milestones other than the conference dates require committee approval.",
+  "earlyBirdNote": "The published provisional timetable takes precedence over earlier draft dates. Keynote and late-news milestones also remain provisional.",
+  "statusLabel": "Provisional",
+  "mode": "owner-draft",
+  "sourceDocument": "05-important-dates.md",
+  "deadlineTimeZone": "Asia/Jakarta",
+  "deadlineLabel": "Submission and registration deadlines are at 23:59 WIB (UTC+7). Conference activities follow Bali time, WITA (UTC+8)."
 }

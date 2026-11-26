@@ -45,27 +45,28 @@ test('programme data can be filtered and approved dates remain valid',()=>{
  }
  for(const row of json('dates'))if(row.date)assert.ok(Number.isFinite(new Date(row.date).getTime()));
  const fees=json('registration');
- assert.equal(fees.planningConversion.from,fees.benchmark.currency,'Planning conversion must match the reference currency');
- assert.ok(Number.isFinite(fees.planningConversion.rate)&&fees.planningConversion.rate>0,'Planning exchange rate must be positive');
- assert.ok(/^[A-Z]{3}$/.test(fees.planningConversion.to),'Planning display currency must be an ISO code');
+ assert.equal(fees.planningCurrency,fees.benchmark.currency,'Display estimates in their supplied source currency');
+ assert.ok(/^[A-Z]{3}$/.test(fees.planningCurrency),'Planning display currency must be an ISO code');
  for(const row of fees.categories)for(const field of ['earlyBird','regular'])if(row[field]!==null){assert.equal(typeof row[field],'number');assert.ok(row[field]>=0);assert.ok(fees.currency,'Fees require an approved currency');}
 });
 
-test('planning dates preserve 2025 lead times without becoming approved deadlines',()=>{
+test('selected provisional timetable does not become approved deadlines or use conflicting drafts',()=>{
  const planning=json('planning');
- const lead=date=>new Date(date+'T00:00:00Z').getTime();
- const currentStart=conference.start.slice(0,10);
- for(const row of json('dates').filter(row=>row.estimatedDate)){
-  assert.equal(lead(currentStart)-lead(row.estimatedDate),lead(planning.referenceConferenceStart)-lead(row.referenceDate));
+ const dates=json('dates');
+ assert.equal(planning.sourceDocument,'05-important-dates.md');assert.equal(planning.deadlineTimeZone,'Asia/Jakarta');
+ for(const row of dates){assert.equal(row.date,null);if(row.estimatedDate)assert.ok(Number.isFinite(new Date(row.estimatedDate).getTime()));}
+ for(const [id,date] of Object.entries({'registration-open':'2027-04-19','abstracts-close':'2027-05-23',acceptance:'2027-06-23','early-bird':'2027-07-28','author-registration':'2027-08-02'})){
+  assert.equal(dates.find(row=>row.id===id).estimatedDate,date);
  }
  const programme=json('dates').find(row=>row.id==='programme');
  assert.equal(programme.estimatedDate,null,'Approximate programme milestone must not imply an exact day');
  assert.equal(programme.estimatedLabel,'Mid-August 2027');
 });
-test('reference fee estimates retain the 2025 source currency and amounts',()=>{
+test('new international estimates use USD while Indonesian fees remain unconfirmed',()=>{
  const fees=json('registration');
- assert.equal(fees.benchmark.currency,'NZD');
- const full=fees.categories.find(row=>row.name==='Full registration');
- const student=fees.categories.find(row=>row.name==='Student');
- assert.deepEqual([full.estimatedEarlyBird,full.estimatedRegular,student.estimatedEarlyBird,student.estimatedRegular],[800,900,400,500]);
+ assert.equal(fees.benchmark.currency,'USD');assert.equal(fees.currency,null);
+ const full=fees.categories.find(row=>row.name==='International — Regular');
+ const student=fees.categories.find(row=>row.name==='International — Student');
+ assert.deepEqual([full.estimatedEarlyBird,full.estimatedRegular,student.estimatedEarlyBird,student.estimatedRegular],[500,600,300,350]);
+ for(const row of fees.categories.filter(row=>row.name.startsWith('Indonesian')))assert.deepEqual([row.estimatedEarlyBird,row.estimatedRegular],[null,null]);
 });

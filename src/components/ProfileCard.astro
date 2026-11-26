@@ -1,6 +1,6 @@
 ---
 import {withBase} from '../utils/url';
-export interface Profile { name:string; title?:string; position?:string; institution:string; country:string; image?:string|null; role?:string; category?:string; talk?:string; biography?:string; approved:boolean; }
+export interface Profile { name:string; title?:string; position?:string; institution:string; country:string; image?:string|null; role?:string; category?:string; talk?:string; biography?:string; approved:boolean; preview?:boolean; }
 interface Props {profile:Profile;}
 const {profile}=Astro.props;
 ---

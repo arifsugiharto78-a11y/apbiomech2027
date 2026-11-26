@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "name": "Prof. Ir. Andi Isra Mahyuddin, Ph.D.",
+    "role": "Conference Chair",
+    "institution": "Faculty of Mechanical and Aerospace Engineering, Institut Teknologi Bandung",
+    "country": "Indonesia",
+    "image": "images/committee/chair-andi-isra-mahyuddin.webp",
+    "width": 800,
+    "height": 800,
+    "approved": true,
+    "preview": true
+  }
+]
